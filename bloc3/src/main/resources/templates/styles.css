@@ -1,0 +1,12 @@
+.mainTitle {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.link {
+   background-color : green !important;
+}
+
+.link:hover {
+    font-weight: 900;
+}
