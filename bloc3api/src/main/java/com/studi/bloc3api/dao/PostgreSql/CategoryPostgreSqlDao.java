@@ -1,18 +1,15 @@
 package com.studi.bloc3api.dao.PostgreSql;
 
+import com.studi.bloc3api.dao.IDao;
 import com.studi.bloc3api.models.Category;
 import com.studi.bloc3api.models.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class CategoryPostgreSqlDao {
+public class CategoryPostgreSqlDao implements IDao<Category> {
 
-    /**
-     * Fonction permettant de récupérer la liste des catégories
-     * @return
-     */
-    public ArrayList<Category> getCategories() {
+    public ArrayList<Category> getDatas() {
 
         try {
             ArrayList<Category> categories = new ArrayList<>();
@@ -53,12 +50,7 @@ public class CategoryPostgreSqlDao {
 
     }
 
-    /**
-     * Fonction permettant de créer une catégorie
-     * @param _label
-     * @return
-     */
-    public Category create(String _label) {
+    public Category create(Category _data) {
         return null;
     }
 

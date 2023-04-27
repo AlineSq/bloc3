@@ -1,5 +1,6 @@
 package com.studi.bloc3api.services;
 
+import com.studi.bloc3api.dao.IDao;
 import com.studi.bloc3api.dao.PostgreSql.CategoryPostgreSqlDao;
 import com.studi.bloc3api.models.Category;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class CategoriesService {
 
-    private CategoryPostgreSqlDao dao;
+    private IDao<Category> dao;
 
     public CategoriesService() {
         this.dao = new CategoryPostgreSqlDao();
@@ -25,7 +26,7 @@ public class CategoriesService {
      */
     @GetMapping("/categories")
     public  List<Category> getCategories() {
-        return this.dao.getCategories();
+        return this.dao.getDatas();
     }
 
     /**
@@ -35,6 +36,9 @@ public class CategoriesService {
      */
     @PostMapping("/create")
     public Category create (String _label) {
-        return this.dao.create(_label);
+
+        Category c = new Category();
+
+        return this.dao.create(c);
     }
 }

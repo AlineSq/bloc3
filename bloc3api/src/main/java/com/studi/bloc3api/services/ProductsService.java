@@ -1,5 +1,6 @@
 package com.studi.bloc3api.services;
 
+import com.studi.bloc3api.dao.IDao;
 import com.studi.bloc3api.models.Product;
 import com.studi.bloc3api.dao.PostgreSql.ProductPostgreSqlDao;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class ProductsService {
 
-    private ProductPostgreSqlDao dao;
+    private IDao<Product> dao;
 
     public ProductsService() {
         this.dao = new ProductPostgreSqlDao();
@@ -26,7 +27,7 @@ public class ProductsService {
      */
     @GetMapping("/products")
     public List<Product> getProducts() {
-        return this.dao.getProducts();
+        return this.dao.getDatas();
     }
 
     /**
@@ -39,6 +40,7 @@ public class ProductsService {
      */
     @PostMapping("/create")
     public Product create(String _name, Integer _price, String _description, Blob _picture) {
-        return this.dao.create(_name, _price, _description, _picture);
+        Product p = new Product();
+        return this.dao.create(p);
     }
 }

@@ -1,18 +1,14 @@
 package com.studi.bloc3api.dao.PostgreSql;
 
+import com.studi.bloc3api.dao.IDao;
 import com.studi.bloc3api.models.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class ProductPostgreSqlDao {
+public class ProductPostgreSqlDao implements IDao<Product> {
 
-
-    /**
-     * Fonction permettant de donner la liste des produits
-     * @return
-     */
-    public ArrayList<Product> getProducts() {
+    public ArrayList<Product> getDatas() {
 
         try {
             ArrayList<Product> products = new ArrayList<>();
@@ -56,15 +52,7 @@ public class ProductPostgreSqlDao {
         }
     }
 
-    /**
-     * Fonction permettant de créer un produit
-     * @param _name
-     * @param _price
-     * @param _description
-     * @param _picture
-     * @return
-     */
-    public Product create(String _name, Integer _price, String _description, Blob _picture) {
+    public Product create(Product _data) {
         return null;
     }
 }
