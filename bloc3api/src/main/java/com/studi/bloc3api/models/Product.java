@@ -1,13 +1,30 @@
 package com.studi.bloc3api.models;
 
-import java.sql.Blob;
-import java.sql.RowId;
+import jakarta.persistence.*;
 
+import java.sql.Blob;
+
+@Entity
+@Table(name = "bloc3_product")
 public class Product {
-  public RowId id;
-  public RowId categoryId ;
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name="product_id")
+  private Integer id;
+
+  @Column(name="category_id")
+  public Integer categoryId ;
+
+  @Column(nullable = false, name = "product_name")
   public String name;
+
+  @Column(nullable = false, name = "product_description")
   public String description;
+
+  @Column(nullable = false, name = "product_price")
   public Integer  price;
+
+  @Column(nullable = false, name = "product_picture")
   public Blob picture;
 }
