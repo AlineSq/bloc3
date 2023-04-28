@@ -25,22 +25,8 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto" style="padding: 3%">
-                    <li class="nav-item active link:hover" style="margin: 0 10% 0;">
-                        <a class="nav-link" href="#">Promos</span></a>
-                    </li>
-                    <li class="nav-item active link:hover" style="margin: 0 10% 0;">
-                        <a class="nav-link" href="#">Mode femme</span></a>
-                    </li>
-                    <li class="nav-item active link:hover" style="margin: 0 10% 0;">
-                        <a class="nav-link" href="#">Mode homme</span></a>
-                    </li>
-                    <li class="nav-item active link:hover" style="margin: 0 10% 0;">
-                        <a class="nav-link" href="#">Mode enfant</span></a>
-                    </li>
-                    <li class="nav-item active link:hover" style="margin: 0 10% 0;">
-                        <a class="nav-link" href="#">Maison</span></a>
-                    </li>
+                <ul class="navbar-nav mr-auto" style="padding: 3%" id="idUlCategories">
+                    <!-- Liste des catégories -->
                 </ul>
             </div>
             <div class="px-3 py-2 border-bottom mb-3">
@@ -52,42 +38,13 @@
             </div>
         </nav>
         <!-- Page body -->
-        <div class="row mb-2">
-            <div class="col-md-6">
-                <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                    <div class="card-body d-flex flex-column align-items-start">
-                        <strong class="d-inline-block mb-2 text-primary">World</strong>
-                        <h3 class="mb-0">
-                            <a class="text-dark" href="#">Featured post</a>
-                        </h3>
-                        <div class="mb-1 text-muted">Nov 12</div>
-                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#">Continue reading</a>
-                    </div>
-                    <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_187bddfa87e%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_187bddfa87e%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2256.20000076293945%22%20y%3D%22131%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                    <div class="card-body d-flex flex-column align-items-start">
-                        <strong class="d-inline-block mb-2 text-success">Design</strong>
-                        <h3 class="mb-0">
-                            <a class="text-dark" href="#">Post title</a>
-                        </h3>
-                        <div class="mb-1 text-muted">Nov 11</div>
-                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#">Continue reading</a>
-                    </div>
-                    <img class="card-img-right flex-auto d-none d-md-block" src="../public/pictures/chemise-rose.jpg" alt="Thumbnail [200x250]" data-holder-rendered="true" style="width: 200px; height: 250px;">
-                </div>
-            </div>
-        </div>
         <div class="page-body">
+            <div class="row mb-2" id="idDivProducts">
+
+                <!-- Liste des produits -->
+            </div>
+
             <div class="container-xl">
-                <div class="row row-cards">
-                    <div class="col-sm-6 col-lg-4" th:id="idDivProducts">
-                    </div>
-                </div>
                 <div class="d-flex">
                     <ul class="pagination ms-auto">
                         <li class="page-item disabled">
@@ -156,44 +113,68 @@
     </div>
 </div>
 <script th:inline="javascript">
+    function getHTMLProduct(categoryName, name, description, price, picture) {
 
-function getHTMLProduct(name, price) {
-    return `<div class="card card-sm">
-                <a class="d-block" href="#"><img
-                        class="card-img-top"
-                        src="./static/photos/beautiful-blonde-woman-relaxing-with-a-can-of-coke-on-a-tree-stump-by-the-beach.jpg"></a>
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <span class="avatar me-3 rounded"
-                              style="background-image: url(./static/avatars/000m.jpg)"></span>
-                        <div>
-                            <div>`+ name +`</div>
-                            <div class="text-muted">Prix : `+ price +`</div>
+         return `<div class="col-md-6">
+                    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <strong class="d-inline-block mb-2 text-success">`+ categoryName +`</strong>
+                            <h3 class="mb-0">
+                                <a class="text-dark" href="#">`+ name +`</a>
+                            </h3>
+                            <p class="card-text mb-auto">`+ description +`</p>
+                            <div>Prix : `+ price +`€</div>
                         </div>
+                        <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_187bddfa87e%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_187bddfa87e%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2256.20000076293945%22%20y%3D%22131%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
                     </div>
-                </div>
-            </div>`;
-}
+                </div>`;
+    }
 
-function loadData() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-    debugger;
-        if (this.readyState == 4 && this.status == 200) {
-            var data = JSON.parse(this.responseText);
+    function loadProducts() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
 
-            let div = document.getElementById("idDivProducts");
-            for (let i=0; data.length>i; i++) {
-                let html = getHTMLProduct(data[i].name,data[i].price);
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+
+                let div = document.getElementById("idDivProducts");
+                let html = "";
+                for (let i=0; data.length>i; i++) {
+                    html += getHTMLProduct(data[i].categoryName,data[i].name, data[i].description, data[i].price, data[i].picture);
+                }
                 div.innerHTML = html;
             }
-            // document.getElementById("idDivProducts").setAttribute("each", "item : "+ data);
-        }
-    };
-    xhttp.open("GET", "http://localhost:8081/products", true);
-    xhttp.send();
-}
-loadData();
+        };
+        xhttp.open("GET", "http://localhost:8081/products", true);
+        xhttp.send();
+    }
+    loadProducts();
+
+    function getHTMLCategory(name) {
+        return `<li class="nav-item active link:hover" style="margin: 0 10% 0;">
+                    <a class="nav-link" href="#">`+ name +`</span></a>
+                </li>`;
+    }
+
+    function loadCategories() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+
+                let ul = document.getElementById("idUlCategories");
+                let html = "";
+                for (let i=0; data.length>i; i++) {
+                    html += getHTMLCategory(data[i].name);
+                }
+                ul.innerHTML = html;
+            }
+        };
+        xhttp.open("GET", "http://localhost:8081/categories", true);
+        xhttp.send();
+    }
+    loadCategories();
 
     </script>
 </body>
