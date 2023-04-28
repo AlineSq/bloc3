@@ -178,6 +178,7 @@ function getHTMLProduct(name, price) {
 function loadData() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
+    debugger;
         if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText);
 
@@ -189,7 +190,7 @@ function loadData() {
             // document.getElementById("idDivProducts").setAttribute("each", "item : "+ data);
         }
     };
-    xhttp.open("GET", "http://localhost:8081/api/products", true);
+    xhttp.open("GET", "http://localhost:8081/products", true);
     xhttp.send();
 }
 loadData();
