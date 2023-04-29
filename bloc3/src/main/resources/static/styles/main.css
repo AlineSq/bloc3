@@ -1,0 +1,25 @@
+.mainTitle {
+    font-weight: 700;
+    font-size: 4rem;
+    color: #B5B175;
+    margin-bottom: revert;
+    -webkit-text-stroke: 2px #9B3E3C;
+}
+
+.img-fluid {
+    max-weight: 15%;
+    opacity: 60% !important;
+}
+
+.background-white {
+    background-color: white;
+}
+
+.text-green {
+    color: #B5B175;
+}
+
+.page-link.active {
+    color: white;
+    background-color: #22BF3B;
+}

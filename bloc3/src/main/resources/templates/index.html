@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mercado</title>
     <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script th:src="@{/js/index.js}" th:inline="javascript"></script>
+    <link th:href="@{/styles/main.css}" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
@@ -14,11 +15,11 @@
 <div class="page">
     <div class="page-wrapper">
         <!-- Page header -->
-        <header class="blog-header py-3 bg-success">
-            <div class="jumbotron p-3 p-md-5 text-white rounded">
-                <div class="col-md-6 px-0">
+        <header class="blog-header py-3 background-white">
+            <div class="jumbotron p-3 p-md-5 rounded">
+                <div class="x-0">
                     <h1 class="mainTitle text-center">Mercado</h1>
-                    <img src="../public/pictures/banniere.jpg" class="max-width: 100%; height: 30%" alt="banniere">
+                    <img th:src="@{/pictures/banniere.jpg}" alt="Bannière" class="img-fluid max-width: 100% max-height: 150px">
                 </div>
             </div>
         </header>
@@ -29,7 +30,7 @@
                     <!-- Liste des catégories -->
                 </ul>
             </div>
-            <div class="px-3 py-2 border-bottom mb-3">
+            <div class="px-3 py-2 mb-3">
                 <div class="container d-flex flex-wrap justify-content-center">
                     <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
                         <input type="search" class="form-control" placeholder="Je recherche..." aria-label="Search">
@@ -112,70 +113,5 @@
         </footer>
     </div>
 </div>
-<script th:inline="javascript">
-    function getHTMLProduct(categoryName, name, description, price, picture) {
-
-         return `<div class="col-md-6">
-                    <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                        <div class="card-body d-flex flex-column align-items-start">
-                            <strong class="d-inline-block mb-2 text-success">`+ categoryName +`</strong>
-                            <h3 class="mb-0">
-                                <a class="text-dark" href="#">`+ name +`</a>
-                            </h3>
-                            <p class="card-text mb-auto">`+ description +`</p>
-                            <div>Prix : `+ price +`€</div>
-                        </div>
-                        <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_187bddfa87e%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_187bddfa87e%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2256.20000076293945%22%20y%3D%22131%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-                    </div>
-                </div>`;
-    }
-
-    function loadProducts() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-
-            if (this.readyState == 4 && this.status == 200) {
-                var data = JSON.parse(this.responseText);
-
-                let div = document.getElementById("idDivProducts");
-                let html = "";
-                for (let i=0; data.length>i; i++) {
-                    html += getHTMLProduct(data[i].categoryName,data[i].name, data[i].description, data[i].price, data[i].picture);
-                }
-                div.innerHTML = html;
-            }
-        };
-        xhttp.open("GET", "http://localhost:8081/products", true);
-        xhttp.send();
-    }
-    loadProducts();
-
-    function getHTMLCategory(name) {
-        return `<li class="nav-item active link:hover" style="margin: 0 10% 0;">
-                    <a class="nav-link" href="#">`+ name +`</span></a>
-                </li>`;
-    }
-
-    function loadCategories() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-
-            if (this.readyState == 4 && this.status == 200) {
-                var data = JSON.parse(this.responseText);
-
-                let ul = document.getElementById("idUlCategories");
-                let html = "";
-                for (let i=0; data.length>i; i++) {
-                    html += getHTMLCategory(data[i].name);
-                }
-                ul.innerHTML = html;
-            }
-        };
-        xhttp.open("GET", "http://localhost:8081/categories", true);
-        xhttp.send();
-    }
-    loadCategories();
-
-    </script>
 </body>
 </html>

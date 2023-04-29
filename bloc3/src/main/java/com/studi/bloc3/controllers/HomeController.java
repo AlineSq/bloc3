@@ -11,8 +11,8 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping(value = "/thymeleaf")
-    public String getThymeleafVue() {
-        return "thymeleafTemplate";
+    @GetMapping(value = "/login-mercado")
+    public String login() {
+        return "login";
     }
 }
