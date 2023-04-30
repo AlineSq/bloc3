@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
-    @Query("SELECT * FROM bloc3_user u WHERE u.login = :login")
+    @Query("SELECT u FROM User u WHERE u.login = :login")
     List<User> findUsers(@Param("login") String login);
 }

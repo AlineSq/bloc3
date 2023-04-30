@@ -3,7 +3,7 @@ package com.studi.bloc3api.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "bloc3_category")
+@Table(name = "bloc3_user")
 public class User {
 
     @Id
