@@ -5,7 +5,7 @@ function getHTMLProduct(categoryName, name, description, price, picture) {
         picInBytes = picture;
 
     return `<div class="col-md-3">
-                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                <div class="card flex-md-row mb-4 box-shadow h-100">
                     <div class="card-body d-flex flex-column align-items-start">
                         <strong class="d-inline-block mb-2 text-success">`+ categoryName +`</strong>
                         <h3 class="mb-0">
@@ -14,12 +14,12 @@ function getHTMLProduct(categoryName, name, description, price, picture) {
                         <p class="card-text mb-auto">`+ description +`</p>
                         <div>Prix : `+ price +`€</div>
                     </div>
-                     <img src="data:image/png;base64,`+ picInBytes +`" class="card-img-right flex-auto d-none d-md-block" style="width: 200px; height: 250px;" data-holder-rendered="true">
+                     <img src="`+ picInBytes +`" class="card-img-right flex-auto d-none d-md-block" style="width: 200px; height: 250px;" data-holder-rendered="true">
                 </div>
             </div>`;
 }
 
-function loadProducts() {
+function loadProducts(categories) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
 
@@ -29,7 +29,19 @@ function loadProducts() {
             let div = document.getElementById("idDivProducts");
             let html = "";
             for (let i=0; data.length>i; i++) {
-                html += getHTMLProduct(data[i].categoryName,data[i].name, data[i].description, data[i].price, data[i].picture);
+                // On récupère le nom de la catégorie
+                const cat = categories.find(c => c.id == data[i].categoryId);
+                let catName = "";
+                if (cat)
+                    catName = cat.name;
+
+                html += getHTMLProduct(
+                    catName,
+                    data[i].name,
+                    data[i].description,
+                    data[i].price,
+                    data[i].picture
+                );
             }
             div.innerHTML = html;
         }
@@ -45,7 +57,7 @@ function getHTMLCategory(name) {
             </li>`;
 }
 
-function loadCategories() {
+function loadCategories(callback) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
 
@@ -58,6 +70,9 @@ function loadCategories() {
                 html += getHTMLCategory(data[i].name);
             }
             ul.innerHTML = html;
+
+            if (callback)
+                callback(data);
         }
     };
     xhttp.open("GET", "http://localhost:8081/categories", true);
@@ -65,8 +80,8 @@ function loadCategories() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  loadProducts();
-  loadCategories();
+    //Déjà on charge les catégories ensuite les produits
+    loadCategories((categories) => loadProducts(categories));
 });
 
 

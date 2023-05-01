@@ -26,5 +26,5 @@ public class Product {
   public Integer price;
 
   @Column(nullable = true, name = "product_picture")
-  public byte[] picture;
+  public String picture;
 }
