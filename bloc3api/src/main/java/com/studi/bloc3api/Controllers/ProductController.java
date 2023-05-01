@@ -3,11 +3,10 @@ package com.studi.bloc3api.Controllers;
 import com.studi.bloc3api.repositories.ProductRepository;
 import com.studi.bloc3api.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -21,8 +20,9 @@ public class ProductController {
     private ProductRepository productRepository;
 
     @PostMapping("/products")
-    public Product createProduct(@RequestBody Product user) {
-        return productRepository.save(user);
+    public Product createProduct(@RequestBody Product _product) {
+
+            return productRepository.save(_product);
     }
 
     @GetMapping("/products")

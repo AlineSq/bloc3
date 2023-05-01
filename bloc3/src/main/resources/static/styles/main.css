@@ -21,5 +21,37 @@
 
 .page-link.active {
     color: white;
-    background-color: #22BF3B;
+    background-color: #22B5B175;
+}
+
+h2 {
+    color: #99911F !important;
+}
+
+.buttons {
+    background: #B5B175 !important;
+    color: white !important;
+    height: 50px;
+    font-size: 1,5rem !important;
+    font-weight: 700 !important;
+}
+
+.active>.page-link, .page-link.active {
+    color: white !important;
+    background-color: #B5B175 !important;
+    border-color: #B5B175 !important;
+}
+
+.page-link {
+    color: #B5B175 !important;
+}
+
+.a:hover {
+    color: #B5B175 !important;
+}
+
+/* Formulaire */
+
+.form-description {
+    height: 200px !important;
 }

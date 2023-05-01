@@ -1,6 +1,10 @@
 function getHTMLProduct(categoryName, name, description, price, picture) {
 
-     return `<div class="col-md-6">
+    let picInBytes = "";
+    if (picture)
+        picInBytes = picture;
+
+    return `<div class="col-md-3">
                 <div class="card flex-md-row mb-4 box-shadow h-md-250">
                     <div class="card-body d-flex flex-column align-items-start">
                         <strong class="d-inline-block mb-2 text-success">`+ categoryName +`</strong>
@@ -10,7 +14,7 @@ function getHTMLProduct(categoryName, name, description, price, picture) {
                         <p class="card-text mb-auto">`+ description +`</p>
                         <div>Prix : `+ price +`€</div>
                     </div>
-                     <img th:src="@{/pictures/chemise-rose.jpg}" alt="Article picture" class="card-img-right flex-auto d-none d-md-block" style="width: 200px; height: 250px;" data-holder-rendered="true">
+                     <img src="data:image/png;base64,`+ picInBytes +`" class="card-img-right flex-auto d-none d-md-block" style="width: 200px; height: 250px;" data-holder-rendered="true">
                 </div>
             </div>`;
 }

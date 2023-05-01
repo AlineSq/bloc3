@@ -25,6 +25,6 @@ public class Product {
   @Column(nullable = false, name = "product_price")
   public Integer price;
 
-  @Column(nullable = false, name = "product_picture")
-  public Blob picture;
+  @Column(nullable = true, name = "product_picture")
+  public byte[] picture;
 }
