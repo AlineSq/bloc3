@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajout d'une catégorie</title>
+    <div th:replace="headerBase"></div>
+    <script th:src="@{/js/form-add-promotions.js}" th:inline="javascript"></script>
+</head>
+<body>
+<div class="page page-center">
+<div class="container container-tight py-4">
+    <h2 class="text-center mb-4">Ajout d'une promotion</h2>
+    <div class="card">
+    </div>
+    <div class="card-body">
+        <form id="idFormCategory" enctype="multipart/form-data">
+            <fieldset class="form-fieldset">
+                <div class="mb-3">
+                    <label class="form-label">Titre de la promotion à ajouter</label>
+                    <input id="idCategoryName" placeholder="Par exemple : BLUE-WEEK30" type="text" class="form-control" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Pourcentage de promotion</label>
+                    <input id="idCategoryName" type="text" class="form-control" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Date de début de la promotion</label>
+                    <div class="input-icon mb-2">
+                    <input class="form-control form_datetime" placeholder="Sous le format jj-mm-aaaa" id="datepicker-icon-beginDate" value="">
+                    <span class="input-icon-addon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M16 3l0 4"></path><path d="M8 3l0 4"></path><path d="M4 11l16 0"></path><path d="M11 15l1 0"></path><path d="M12 15l0 3"></path></svg>
+                      </span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Date de fin de la promotion</label>
+                    <div class="input-icon mb-2">
+                    <input class="form-control form_datetime" placeholder="Sous le format jj-mm-aaaa" id="datepicker-icon-endDate" value="">
+                    <span class="input-icon-addon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M16 3l0 4"></path><path d="M8 3l0 4"></path><path d="M4 11l16 0"></path><path d="M11 15l1 0"></path><path d="M12 15l0 3"></path></svg>
+                      </span>
+                    </div>
+                </div>
+                <div style="text-align-last: center;">
+                    <button type="submit" class="btn buttons ms-auto">Valider</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+</body>

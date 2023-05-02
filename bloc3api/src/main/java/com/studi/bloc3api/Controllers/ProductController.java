@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@RequestMapping("/products")
 public class ProductController {
 
 
@@ -19,13 +20,13 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
-    @PostMapping("/products")
+    @PostMapping("")
     public Product createProduct(@RequestBody Product _product) {
 
             return productRepository.save(_product);
     }
 
-    @GetMapping("/products")
+    @GetMapping("")
     public List<Product> getProduct() {
         return productRepository.findAll();
     }
