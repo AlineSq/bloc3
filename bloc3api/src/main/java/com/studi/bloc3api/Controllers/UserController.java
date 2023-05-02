@@ -62,6 +62,14 @@ public class UserController {
             }
         }
         return foundToken;
+    }
 
+    @GetMapping("/logout")
+    public String logout(@RequestParam String _login) {
+        Token token = findToken(_login);
+        if (token != null){
+            this.tokens.remove(token);
+        }
+        return "Déconnexion réussie";
     }
 }

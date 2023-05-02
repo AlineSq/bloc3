@@ -63,7 +63,7 @@ $(document).ready(function() {
                   // Traiter la réponse du backend
                   alert("Votre produit a bien été ajouté !");
                   // Rediriger vers la page d'affichage de l'administration
-                //  window.location.href = "/admin-page";
+                  window.location.href = "/admin-page";
                 },
                 error: function(xhr, status, error) {
                   // Gérer les erreurs de la requête

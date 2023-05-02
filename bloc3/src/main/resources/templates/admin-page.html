@@ -5,27 +5,36 @@
     <title>Page d'administration</title>
     <div th:replace="headerBase"></div>
 </head>
-<body class="theme-light">
-<div class="page">
-    <div class="page-wrapper">
-        <div class="page-body">
-            <div class="container-xl">
-                <div class="row">
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="dropdown-menu dropdown-menu-demo">
-                            <a class="dropdown-item" href="#">
-                                Action
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                Another action
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<body class="d-flex flex-column bg-white theme-light">
+<script src="./dist/js/demo-theme.min.js?1674944800"></script>
+<div class="row g-0 flex-fill">
+    <div th:replace="admin-menu"></div>
+    <div class="col-12 col-lg-6 col-xl-8 d-none d-lg-block">
+        <!-- Photo -->
+        <img th:src="@{/pictures/page-login.jpg}" />
     </div>
 </div>
-</div>
+<!-- Libs JS -->
+<!-- Tabler Core -->
+<script src="./dist/js/tabler.min.js?1674944800" defer=""></script>
+<script src="./dist/js/demo.min.js?1674944800" defer=""></script>
+
 </body>
 </html>
+
+<script>
+    function Logout(_login) {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8081/logout",
+            data: _login,
+            success: function(response) {
+              alert(response.data);
+              window.location.href = "/admin-page";
+            },
+            error: function(xhr, status, error) {
+              alert("Erreur de la déconnexion : " + error);
+            }
+        });
+    }
+</script>

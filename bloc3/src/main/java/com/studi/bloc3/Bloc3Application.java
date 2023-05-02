@@ -2,6 +2,7 @@ package com.studi.bloc3;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @SpringBootApplication
 public class Bloc3Application {
@@ -9,5 +10,7 @@ public class Bloc3Application {
 		SpringApplication.run(Bloc3Application.class, args);
 	}
 }
+
+
 
 
