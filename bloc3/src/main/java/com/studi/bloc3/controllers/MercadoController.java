@@ -23,8 +23,8 @@ public class MercadoController {
     @GetMapping(value = "/form-add-product")
     public String form() { return "form-add-product"; }
 
-    @GetMapping(value = "/change-product")
-    public String changeProduct() { return "change-product"; }
+    @GetMapping(value = "/catalog-admin")
+    public String catalogAdmin() { return "catalog-admin"; }
 
     @GetMapping(value = "/form-add-category")
     public String addCategory() { return "form-add-category"; }

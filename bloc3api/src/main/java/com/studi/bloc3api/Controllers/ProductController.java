@@ -4,9 +4,6 @@ import com.studi.bloc3api.repositories.ProductRepository;
 import com.studi.bloc3api.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -29,5 +26,10 @@ public class ProductController {
     @GetMapping("")
     public List<Product> getProduct() {
         return productRepository.findAll();
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteProduct(@PathVariable Long id) {
+        productRepository.deleteById(id.intValue());
     }
 }

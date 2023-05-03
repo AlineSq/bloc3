@@ -2,23 +2,28 @@ function getHTMLCategory(_category) {
     return  `<li class="nav-item" role="presentation"><a href="#`+ _category.id +`" class="nav-link" data-bs-toggle="tab" aria-selected="true" role="tab">`+ _category.name +`</a></li>`;
 }
 
-function getHTMLProduct(categoryId, name, description, price, picture) {
+function getHTMLProduct(_categoryId, _product) {
 
     let picInBytes = "";
-    if (picture)
-        picInBytes = picture;
+    if (_product.picture)
+        picInBytes = _product.picture;
 
-    return `<div class="tab-pane col-md-3 show" id="`+ categoryId +`" role="tabpanel">
+    let specificButtons = "";
+    if (addonHtml)
+        specificButtons = addonHtml(_product.id);
+
+    return `<div class="tab-pane col-md-3 show" id="`+ _categoryId +`" role="tabpanel">
                 <div class="card card-sm">
+                    <div class="card-header">
+                           <h3 class="card-title">`+ _product.name +`</h3>
+                           `+ specificButtons +`
+
+                   </div>
                     <div class="card-body">
-                        <h3 class="mb-0">
-                            <a class="text-dark" href="#">`+ name +`</a>
-                        </h3>
-                        <p class="card-text mb-auto">`+ description +`</p>
-                        <div>Prix : `+ price +`€</div>
+                        <p class="card-text mb-auto">`+ _product.description +`</p>
+                        <div>Prix : `+ _product.price +`€</div>
                     </div>
                      <img src="`+ picInBytes +`" class="card-img-bottom">
-                    </div>
                 </div>
            </div>`;
 }
@@ -41,10 +46,7 @@ function loadProducts(categories) {
 
                 html += getHTMLProduct(
                     catId,
-                    data[i].name,
-                    data[i].description,
-                    data[i].price,
-                    data[i].picture
+                    data[i]
                 );
             }
             div.innerHTML = html;

@@ -52,24 +52,14 @@ $(document).ready(function() {
         }
 
         let afterLoadedFile = (base64) => {
-            // Envoyer les données au backend via une requête POST
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:8081/products",
 
-                contentType: "application/json;charset=UTF-8",
-                data: JSON.stringify({ "categoryId": category, "name": name, "description": description, "price": price, "picture": base64}),
-                success: function(response) {
-                  // Traiter la réponse du backend
-                  alert("Votre produit a bien été ajouté !");
-                  // Rediriger vers la page d'affichage de l'administration
-                  window.location.href = "/admin-page";
-                },
-                error: function(xhr, status, error) {
-                  // Gérer les erreurs de la requête
-                  alert("Erreur dans l'ajout du produit : " + error);
+            addProductQuery(
+                { "categoryId": category, "name": name, "description": description, "price": price, "picture": base64},
+                () => {
+                    window.location.href = "/catalog-admin";
                 }
-            });
+            );
+
         };
     });
 });

@@ -1,114 +1,58 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:font-size="http://www.w3.org/1999/xhtml"
-      xmlns:font-bold="http://www.w3.org/1999/xhtml" xmlns:background-image="">
+<html lang="fr" xmlns:font-size="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mercado</title>
+    <title>Home Page</title>
     <div th:replace="headerBase"></div>
-    <script th:src="@{/js/index.js}" th:inline="javascript"></script>
 </head>
-<body class="theme-light">
-<div class="page">
+<body>
+<div class="page page center">
+    <div th:replace="index-base"></div>
     <div class="page-wrapper">
-        <!-- Page header -->
-        <header class="blog-header py-3 background-white">
-            <div class="jumbotron p-3 p-md-5 rounded">
-                <div class="x-0">
-                    <h1 class="mainTitle text-center">Mercado</h1>
-                    <img th:src="@{/pictures/banniere.jpg}" alt="Bannière" class="img-fluid max-width: 100% max-height: 150px">
-                </div>
+        <div class="page-body">
+            <div class="container-xl">
+                <div th:replace="catalog-base"></div>
             </div>
-        </header>
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto" style="padding: 3%" id="idUlCategories">
-                    <!-- Liste des catégories -->
+        </div>
+    </div>
+
+
+</div>
+<footer class="footer footer-transparent d-print-none">
+    <div class="container-xl">
+        <div class="row text-center align-items-center flex-row-reverse">
+            <div class="col-lg-auto ms-lg-auto">
+                <ul class="list-inline list-inline-dots mb-0">
+                    <li class="list-inline-item">
+                        <a class="link-secondary" href="https://github.com/sponsors/codecalm" rel="noopener"
+                           target="_blank">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
+                            <svg class="icon text-pink icon-filled icon-inline"
+                                 fill="none" height="24" stroke="currentColor"
+                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                 viewBox="0 0 24 24"
+                                 width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none" stroke="none"></path>
+                                <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path>
+                            </svg>
+                            Sponsor
+                        </a>
+                    </li>
                 </ul>
             </div>
-            <div class="px-3 py-2 mb-3">
-                <div class="container d-flex flex-wrap justify-content-center">
-                    <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search" >
-                        <input type="search" class="form-control" placeholder="Je recherche..." aria-label="Search">
-                    </form>
-                </div>
+            <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                <ul class="list-inline list-inline-dots mb-0">
+                    <li class="list-inline-item">
+                        Copyright © 2023 - Aline Squarzoni
+                    </li>
+                </ul>
             </div>
-        </nav>
-        <!-- Page body -->
-        <div class="page-body">
-            <div class="row mb-2" id="idDivProducts">
-
-                <!-- Liste des produits -->
-            </div>
-
-            <!-- <div class="container-xl">
-                <div class="d-flex">
-                    <ul class="pagination ms-auto">
-                        <li class="page-item disabled">
-                            <a aria-disabled="true" class="page-link link" href="#" tabindex="-1">-->
-                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                                <!--<svg class="icon" fill="none" height="24" stroke="currentColor"
-                                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                     width="24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M0 0h24v24H0z" fill="none" stroke="none"></path>
-                                    <path d="M15 6l-6 6l6 6"></path>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link link" href="#">1</a></li>
-                        <li class="page-item active"><a class="page-link link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link link" href="#">5</a></li>
-                        <li class="page-item">
-                            <a class="page-link link" href="#">-->
-                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-                                <!--<svg class="icon" fill="none" height="24" stroke="currentColor"
-                                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                     width="24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M0 0h24v24H0z" fill="none" stroke="none"></path>
-                                    <path d="M9 6l6 6l-6 6"></path>
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>-->
         </div>
-        <footer class="footer footer-transparent d-print-none">
-            <div class="container-xl">
-                <div class="row text-center align-items-center flex-row-reverse">
-                    <div class="col-lg-auto ms-lg-auto">
-                        <ul class="list-inline list-inline-dots mb-0">
-                            <li class="list-inline-item">
-                                <a class="link-secondary" href="https://github.com/sponsors/codecalm" rel="noopener"
-                                   target="_blank">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
-                                    <svg class="icon text-pink icon-filled icon-inline"
-                                         fill="none" height="24" stroke="currentColor"
-                                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                         viewBox="0 0 24 24"
-                                         width="24" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0 0h24v24H0z" fill="none" stroke="none"></path>
-                                        <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path>
-                                    </svg>
-                                    Sponsor
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                        <ul class="list-inline list-inline-dots mb-0">
-                            <li class="list-inline-item">
-                                Copyright © 2023 - Aline Squarzoni
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
     </div>
-</div>
+</footer>
 </body>
 </html>
+
+<script>
+    const addonHtml = null;
+</script>

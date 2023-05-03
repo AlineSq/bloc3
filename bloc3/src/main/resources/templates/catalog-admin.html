@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Modification de produit</title>
+        <div th:replace="headerBase"></div>
+        <script th:src="@{/js/addon-admin.js}" th:inline="javascript"></script>
+    </head>
+    <body class="theme-light">
+        <div class="page">
+
+            <div th:replace="admin-menu"></div>
+            <div class="page-wrapper">
+                <div class="page-body">
+                    <div class="container-xl">
+                        <div th:replace="catalog-base"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

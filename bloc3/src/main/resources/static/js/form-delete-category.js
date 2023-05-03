@@ -29,18 +29,12 @@ $(document).ready(function() {
 
         // Récupérer les valeurs saisies dans le formulaire
         let idCategory = $("#select-tags-advanced").val();
-
-        $.ajax({
-            url: 'http://localhost:8081/categories/' + idCategory,
-            type: 'DELETE',
-            success: function(result) {
-                alert('La catégorie a été supprimée avec succès.');
-                      // Rediriger vers la page d'affichage de l'administration
-                      window.location.href = "/admin-page";
-            },
-            error: function(xhr, status, error) {
-                alert("Une erreur s'est produite lors de la suppression de la catégorie : " + error);
+debugger;
+        deleteCategoryQuery(
+            idCategory,
+            () => {
+                window.location.href = "/catalog-admin";
             }
-        });
+        );
     });
 });
