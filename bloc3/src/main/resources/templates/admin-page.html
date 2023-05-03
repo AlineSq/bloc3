@@ -2,23 +2,20 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Page d'administration</title>
+    <title>Modification de produit</title>
     <div th:replace="headerBase"></div>
+    <script th:src="@{/js/change-product.js}" th:inline="javascript"></script>
 </head>
-<body class="d-flex flex-column bg-white theme-light">
-<script src="./dist/js/demo-theme.min.js?1674944800"></script>
-<div class="row g-0 flex-fill">
-    <div th:replace="admin-menu"></div>
-    <div class="col-12 col-lg-6 col-xl-8 d-none d-lg-block">
-        <!-- Photo -->
-        <img th:src="@{/pictures/page-login.jpg}" />
-    </div>
-</div>
-<!-- Libs JS -->
-<!-- Tabler Core -->
-<script src="./dist/js/tabler.min.js?1674944800" defer=""></script>
-<script src="./dist/js/demo.min.js?1674944800" defer=""></script>
+<body class="theme-light">
+    <div class="page">
 
+        <div th:replace="admin-menu"></div>
+
+
+        <div class="page-wrapper">
+            <img th:src="@{/pictures/page-login.jpg}" style="max-width: 100%;height: 100%;" />
+        </div>
+    </div>
 </body>
 </html>
 

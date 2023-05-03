@@ -55,3 +55,8 @@ h2 {
 .form-description {
     height: 200px !important;
 }
+
+#idPrice {
+    width: 20%;
+
+}
