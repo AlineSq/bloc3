@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
 
     /**
@@ -27,11 +29,32 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/login")
-    public String checkUser(@RequestParam("login") String _login, @RequestParam("password") String _password)
-    {
+    @PostMapping("check")
+    public String checkToken(@RequestBody Map<String, String> body) throws IllegalAccessException {
+        String _login = body.get("login");
+        String _token = body.get("token");
+
+        if (_login.length() > 0 && _token.length() > 0) {
+
+            Token foundToken = findToken(_login);
+
+            if (foundToken != null && foundToken.equals(_token)) {
+                foundToken.dateCreation = new Date();
+                return "true";
+            }
+        }
+        throw new IllegalAccessException("Authentification échouée");
+    }
+
+    @PostMapping("login")
+    public String checkUser(@RequestBody Map<String, String> body) throws IllegalAccessException {
+        String _login = body.get("login");
+        String _password = body.get("password");
         Token activeToken = null;
-        User user = userRepository.findUsers(_login).get(0);
+        List<User> users = userRepository.findUsers(_login);
+        User user = null;
+        if (users.size() == 1)
+            user = users.get(0);
         if (user != null && user.isAdmin && _password !=null && _password.equals(user.password)) {
 
             Token foundToken = findToken(user.login);
@@ -45,7 +68,7 @@ public class UserController {
                 return t.value;
             }
         }
-        return "Login ou mot de passe incorrect";
+        throw new IllegalAccessException("Login ou mot de passe invalide");
     }
 
     /**

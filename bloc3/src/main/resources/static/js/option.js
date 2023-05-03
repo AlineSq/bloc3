@@ -26,8 +26,16 @@ var myQuery = function(_urlEnd, _type, _contentType, _data, _successCallBack, _e
         error: function(xhr, status, error) {
             if (_errorCallBack)
                 _errorCallBack(xhr?.responseJSON);
-        }
+        },
     };
+
+    var token = localStorage.getItem('token');
+
+    if (token) {
+        optionQuery.headers = {
+            'Authorization': 'Bearer ' + token
+        };
+    }
 
     if (_contentType)
         optionQuery.contentType = _contentType;
@@ -112,4 +120,22 @@ var addCategoryQuery = function(_data, _successCallBack) {
              notify("Votre catégorie a bien été ajoutée !", 'success');
          }
      );
+}
+
+const loginQuery = function(_login, _password, _successCallBack) {
+    myQuery(
+        'users/login',
+        'POST',
+        'application/json;charset=UTF-8',
+        {login : _login, password : _password},
+        (_result) => {
+            localStorage.setItem('token', _result);
+            if (_successCallBack)
+                _successCallBack(_result);
+        },
+        (_error) => {
+            console.log(_error);
+            notify(_error.message);
+        }
+    );
 }

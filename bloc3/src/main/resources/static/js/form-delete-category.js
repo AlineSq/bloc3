@@ -29,7 +29,7 @@ $(document).ready(function() {
 
         // Récupérer les valeurs saisies dans le formulaire
         let idCategory = $("#select-tags-advanced").val();
-debugger;
+
         deleteCategoryQuery(
             idCategory,
             () => {
