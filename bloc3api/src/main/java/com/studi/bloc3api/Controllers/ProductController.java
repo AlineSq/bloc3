@@ -4,6 +4,9 @@ import com.studi.bloc3api.repositories.ProductRepository;
 import com.studi.bloc3api.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.nio.file.Path;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -29,7 +32,34 @@ public class ProductController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteProduct(@PathVariable Long id) {
-        productRepository.deleteById(id.intValue());
+    public void deleteProduct(@PathVariable Integer id) {
+        productRepository.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public Product updateProduct(@PathVariable Integer id, @RequestBody Product product) {
+        Product existingProduct = productRepository.findById(id).orElse(null);
+        if (existingProduct != null) {
+            existingProduct = product;
+            existingProduct.id = id;
+            return productRepository.save(existingProduct);
+        }
+        return null;
+    }
+
+
+    /* @PostMapping("/updatePromotion?id={idProduct}&startDate={startDate}&endDate={endDate}&percent={percent}")
+    public Product updatePromotion(@PathVariable Integer idProduct, @PathVariable Date startDate,
+                                   @PathVariable Date endDate, @PathVariable Integer percent) { */
+    @PostMapping("/updatePromotion")
+    public Product updatePromotion(@RequestBody Product product) {
+        Product existingProduct = productRepository.findById(product.id).orElse(null);
+        if (existingProduct != null) {
+            existingProduct.promoStart = product.promoStart;
+            existingProduct.promoEnd = product.promoEnd;
+            existingProduct.promoPercent = product.promoPercent;
+            return productRepository.save(existingProduct);
+        }
+        return null;
     }
 }

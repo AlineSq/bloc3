@@ -1,3 +1,5 @@
+/* Général */
+
 .mainTitle {
     font-weight: 700;
     font-size: 4rem;
@@ -36,6 +38,12 @@ h2 {
     font-weight: 700 !important;
 }
 
+.card-title {
+    color: #B5B175 !important;
+}
+
+/* Liens */
+
 .active>.page-link, .page-link.active {
     color: white !important;
     background-color: #B5B175 !important;
@@ -46,9 +54,35 @@ h2 {
     color: #B5B175 !important;
 }
 
-.a:hover {
-    color: #B5B175 !important;
+.nav-link {
+    font-weight: 700;
 }
+
+.nav-link.active,
+.nav-link-title {
+    color: #8976B5 !important;
+}
+
+.nav-link-title:hover {
+    color: #412F69 !important;
+}
+
+#admin-menu {
+    color: #412F69;
+    font-weight: 700;
+}
+
+.promo-price {
+    font-weight: 700;
+    color: red;
+}
+
+/* Page admin */
+
+.body-admin
+ {
+ overflow:hidden;
+ }
 
 /* Formulaire */
 
@@ -60,3 +94,10 @@ h2 {
     width: 20%;
 
 }
+
+/* Catalogue */
+
+.row>* {
+    min-height: 400px !important;
+}
+

@@ -10,22 +10,21 @@ function getHTMLProduct(_categoryId, _product) {
 
     let specificButtons = "";
     if (addonHtml)
-        specificButtons = addonHtml(_product.id);
+        specificButtons = addonHtml(_product);
 
-    return `<div class="tab-pane col-md-3 show" id="`+ _categoryId +`" role="tabpanel">
-                <div class="card card-sm">
-                    <div class="card-header">
-                           <h3 class="card-title">`+ _product.name +`</h3>
-                           `+ specificButtons +`
+    return `<div class="card card-sm col-sm-4 col-lg-3 h-50 d-inline-block">
+                <div class="card-header">
+                       <h3 class="card-title">`+ _product.name +`</h3>
+                       `+ specificButtons +`
 
-                   </div>
-                    <div class="card-body">
-                        <p class="card-text mb-auto">`+ _product.description +`</p>
-                        <div>Prix : `+ _product.price +`€</div>
-                    </div>
-                     <img src="`+ picInBytes +`" class="card-img-bottom">
+               </div>
+                <div class="card-body">
+                    <p class="card-text mb-auto">`+ _product.description +`</p>
+                    <div>Prix : `+ _product.price +`€</div>
+                    <img src="`+ picInBytes +`" class="card-img-bottom">
                 </div>
-           </div>`;
+
+            </div>`;
 }
 
 function loadProducts(categories) {
@@ -33,21 +32,27 @@ function loadProducts(categories) {
     xhttp.onreadystatechange = function() {
 
         if (this.readyState == 4 && this.status == 200) {
-            var data = JSON.parse(this.responseText);
+            let data = JSON.parse(this.responseText);
 
             let div = document.getElementById("idDivProducts");
             let html = "";
-            for (let i=0; data.length>i; i++) {
-                // On récupère le nom de la catégorie
-                const cat = categories.find(c => c.id == data[i].categoryId);
-                let catName = "";
-                if (cat)
-                    catId = cat.id;
+            let elementActive = false;
 
-                html += getHTMLProduct(
-                    catId,
-                    data[i]
-                );
+            for (let iCat = 0; categories.length > iCat; iCat++){
+                let actualCat = categories[iCat];
+                html += '<div class="tab-pane row row-deck row-cards" id="'+ actualCat.id +'" role="tabpanel">';
+                if (!elementActive)
+                    elementActive = true;
+
+                let products = data.filter(p => p.categoryId == actualCat.id);
+                for (let i = 0; products.length > i; i++) {
+                    html += getHTMLProduct(
+                        actualCat.id,
+                        products[i]
+                    );
+                }
+
+                html += "</div>";
             }
             div.innerHTML = html;
         }

@@ -3,6 +3,7 @@ package com.studi.bloc3api.models;
 import jakarta.persistence.*;
 
 import java.sql.Blob;
+import java.util.Date;
 
 @Entity
 @Table(name = "bloc3_product")
@@ -27,4 +28,13 @@ public class Product {
 
   @Column(nullable = true, name = "product_picture")
   public String picture;
+
+  @Column(nullable = true, name="promotion_start_date")
+  public Date promoStart ;
+
+  @Column(nullable = true, name="promotion_end_date")
+  public Date promoEnd ;
+
+  @Column(nullable = true, name="promotion_percent")
+  public Integer promoPercent ;
 }

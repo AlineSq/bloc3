@@ -52,11 +52,13 @@ $(document).ready(function() {
         }
 
         let afterLoadedFile = (base64) => {
-
             addProductQuery(
                 { "categoryId": category, "name": name, "description": description, "price": price, "picture": base64},
                 () => {
-                    window.location.href = "/catalog-admin";
+                    setTimeout(
+                       ()=> window.location.href = "/catalog-admin",
+                       2500
+                    );
                 }
             );
 

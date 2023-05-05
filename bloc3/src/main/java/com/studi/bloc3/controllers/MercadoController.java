@@ -32,7 +32,7 @@ public class MercadoController {
     @GetMapping(value = "/form-delete-category")
     public String deleteCategory() { return "form-delete-category"; }
 
-    @GetMapping(value = "/form-add-promotions")
+    @GetMapping(value = "/form-add-promo")
     public String addPromotions() { return "form-add-promotions"; }
 
 }

@@ -3,8 +3,8 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <h1 class="navbar-brand navbar-brand-autodark">
-      <a href=".">
+    <h1 class="navbar-brand navbar-brand-autodark" id="admin-menu">
+      <a href="/admin-page">
         MENU
       </a>
     </h1>
@@ -138,14 +138,41 @@
     <div class="collapse navbar-collapse" id="sidebar-menu">
       <ul class="navbar-nav pt-lg-3">
         <li class="nav-item">
-          <a class="nav-link" href="./"><span class="nav-link-title">Home</span></a>
-          <a class="nav-link"  href="./catalog-admin"><span class="nav-link-title">Voir les produits</span></a>
-          <a class="nav-link"  href="./form-add-category"><span class="nav-link-title">Ajouter une catégorie</span></a>
-          <a class="nav-link"  href="./form-delete-category"><span class="nav-link-title">Supprimer une catégorie</span></a>
-          <a class="nav-link"  href="./form-add-product"><span class="nav-link-title">Ajouter un produit</span></a>
-          <a class="nav-link"  href="./form-add-promotions"><span class="nav-link-title">Gestion des promotions</span></a>
+
+          <a class="nav-link"  href="./catalog-admin">
+          <span class="nav-link-icon d-md-none d-lg-inline-block">
+           <i class="ti ti-building-store"></i>
+           </span>
+          <span class="nav-link-title">Voir les produits</span>
+
+
+          <a class="nav-link"  href="./form-add-product">
+          <span class="nav-link-icon d-md-none d-lg-inline-block">
+           <i class="ti ti-plus"></i>
+           </span>
+            <span class="nav-link-title">Ajouter un produit</span>
+
+          <a class="nav-link"  href="./form-add-category">
+            <span class="nav-link-icon d-md-none d-lg-inline-block">
+             <i class="ti ti-category-2"></i>
+             </span>
+            <span class="nav-link-title">Ajouter une catégorie</span>
+
+          <a class="nav-link"  href="./form-delete-category">
+            <span class="nav-link-icon d-md-none d-lg-inline-block">
+             <i class="ti ti-category-2"></i>
+             </span>
+            <span class="nav-link-title">Suppression d'une catégorie</span>
+
+          <a class="nav-link"  href="./form-add-promotions">
+            <span class="nav-link-icon d-md-none d-lg-inline-block">
+             <i class="ti ti-tags"></i>
+             </span>
+            <span class="nav-link-title">Gestion des promotions</span>
+
+
           <a class="nav-link"  href="#">
-            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+            <span class="nav-link-icon d-md-none d-lg-inline-block">
              <i class="ti ti-logout"></i>
              </span>
             <span class="nav-link-title">Se déconnecter</span>

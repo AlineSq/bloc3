@@ -27,17 +27,6 @@ public class CategoryController {
         return categoryRepository.findAll();
     }
 
-    /* @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
-        Product existingProduct = productRepository.findById(id).orElse(null);
-        if (existingProduct != null) {
-            existingProduct.setName(product.getName());
-            existingProduct.setPrice(product.getPrice());
-            return productRepository.save(existingProduct);
-        }
-        return null;
-    }*/
-
     @DeleteMapping("{id}")
     public void deleteCategory(@PathVariable Long id) {
         categoryRepository.deleteById(id.intValue());

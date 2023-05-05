@@ -1,5 +1,5 @@
 //documentation https://grotesquegentleadvance--samkhaled.repl.co/
-var notify = function(_text, _status) {
+const notify = function(_text, _status) {
     $.notify(
         _text,
         {
@@ -13,9 +13,9 @@ var notify = function(_text, _status) {
     );
 }
 
-var urlBase = 'http://localhost:8081/';
+const urlBase = 'http://localhost:8081/';
 
-var myQuery = function(_urlEnd, _type, _contentType, _data, _successCallBack, _errorCallBack) {
+const myQuery = function(_urlEnd, _type, _contentType, _data, _successCallBack, _errorCallBack) {
     let optionQuery = {
         url: urlBase + _urlEnd,
         type: _type,
@@ -29,7 +29,7 @@ var myQuery = function(_urlEnd, _type, _contentType, _data, _successCallBack, _e
         },
     };
 
-    var token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
     if (token) {
         optionQuery.headers = {
@@ -46,7 +46,7 @@ var myQuery = function(_urlEnd, _type, _contentType, _data, _successCallBack, _e
     $.ajax(optionQuery);
 }
 
-var deleteQuery = function(_urlEnd, _successCallBack) {
+const deleteQuery = function(_urlEnd, _successCallBack) {
     myQuery(
         _urlEnd,
         'DELETE',
@@ -60,7 +60,7 @@ var deleteQuery = function(_urlEnd, _successCallBack) {
     );
 }
 
-var deleteCategoryQuery = function(_id, _successCallBack) {
+const deleteCategoryQuery = function(_id, _successCallBack) {
     deleteQuery(
         'categories/' + _id,
          (_result) => {
@@ -71,7 +71,7 @@ var deleteCategoryQuery = function(_id, _successCallBack) {
     );
 }
 
-var deleteProductQuery = function(_id, _successCallBack) {
+const deleteProductQuery = function(_id, _successCallBack) {
     deleteQuery(
         'products/' + _id,
          (_result) => {
@@ -82,7 +82,7 @@ var deleteProductQuery = function(_id, _successCallBack) {
     );
 }
 
-var addQuery = function(_urlEnd, _data, _successCallBack) {
+const addQuery = function(_urlEnd, _data, _successCallBack) {
     myQuery(
         _urlEnd,
         'POST',
@@ -96,24 +96,25 @@ var addQuery = function(_urlEnd, _data, _successCallBack) {
     );
 }
 
-var addProductQuery = function(_data, _successCallBack) {
+const addProductQuery = function(_data, _successCallBack) {
     addQuery(
         'products',
         _data,
-        _successCallBack,
         (_result) => {
+
+            notify("Votre produit a bien été ajouté !", 'success');
+
             if (_successCallBack)
                 _successCallBack(_result);
-            notify("Votre produit a bien été ajouté !", 'success');
+
         }
     );
 }
 
-var addCategoryQuery = function(_data, _successCallBack) {
+const addCategoryQuery = function(_data, _successCallBack) {
      addQuery(
          'categories',
          _data,
-         _successCallBack,
          (_result) => {
              if (_successCallBack)
                 _successCallBack(_result);
@@ -139,3 +140,32 @@ const loginQuery = function(_login, _password, _successCallBack) {
         }
     );
 }
+
+const updateQuery = function(_urlEnd, _data, _successCallBack) {
+    myQuery(
+        _urlEnd,
+        'UPDATE',
+        'application/json;charset=UTF-8',
+        _data,
+        _successCallBack,
+        (_error) => {
+            console.log(_error);
+            notify("Une erreur s'est produite lors de la mise à jour : "+ _error.message , 'warning');
+        }
+    );
+}
+
+const updatePromotionQuery = function(_productId, _promotionStartDate, _promotionEndDate, _percent, _successCallBack) {
+    myQuery(
+        'products/updatePromotion',
+        'POST',
+        'application/json;charset=UTF-8',
+        { "id": _productId, "promoStart": _promotionStartDate, "promoEnd": _promotionEndDate, "promoPercent":_percent},
+        _successCallBack,
+        (_error) => {
+            console.log(_error);
+            notify("Une erreur s'est produite lors de la mise à jour de la promotion : "+ _error.message , 'warning');
+        }
+    );
+}
+
