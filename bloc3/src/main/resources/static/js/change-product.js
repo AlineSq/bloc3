@@ -12,6 +12,14 @@ function getHTMLProduct(_categoryId, _product) {
     if (addonHtml)
         specificButtons = addonHtml(_product);
 
+    let dateNow = new Date();
+    let htmlPrice = `Prix : `+ _product.price + `€`;
+
+    if (_product.promoPercent && _product.promoStart <= dateNow &&  dateNow <= _product.promoEnd) {
+        htmlPrice = `Prix : <strike>`+ _product.price + `€</strike> <span class='promo-price'>`+ getPromoPrice(_product.price, _product.promoPercent) + `€</span>`;
+    }
+
+
     return `<div class="card card-sm col-sm-4 col-lg-3 h-50 d-inline-block">
                 <div class="card-header">
                        <h3 class="card-title">`+ _product.name +`</h3>
@@ -20,7 +28,7 @@ function getHTMLProduct(_categoryId, _product) {
                </div>
                 <div class="card-body">
                     <p class="card-text mb-auto">`+ _product.description +`</p>
-                    <div>Prix : `+ _product.price +`€</div>
+                    <div>`+ htmlPrice + `</div>
                     <img src="`+ picInBytes +`" class="card-img-bottom">
                 </div>
 
@@ -45,7 +53,13 @@ function loadProducts(categories) {
                     elementActive = true;
 
                 let products = data.filter(p => p.categoryId == actualCat.id);
+
                 for (let i = 0; products.length > i; i++) {
+
+                    // les dates viennent en string, on les reformates
+                    products[i].promoStart = new Date(products[i].promoStart);
+                    products[i].promoEnd = new Date(products[i].promoEnd);
+
                     html += getHTMLProduct(
                         actualCat.id,
                         products[i]

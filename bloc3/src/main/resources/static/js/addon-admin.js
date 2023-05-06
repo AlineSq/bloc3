@@ -1,7 +1,8 @@
 const addonHtml = function (_product) {
+    //On doit passer les dates en milliseconde pour que l'url soit valide
 
     return `<div class="card-actions btn-actions">
-         <a href='#' onclick='goToPromo(` + _product.id + `,` + _product.price + `)' class='btn-action'>
+         <a href='#' onclick='goToPromo(` + _product.id + `,` + _product.price + `,` + _product.promoPercent + `,` + _product.promoStart.getTime() + `,` + _product.promoEnd.getTime() + `)' class='btn-action'>
             <img src='/pictures/promo.png' class='icon' width='24' height='24' viewBox='0 0 24 24' stroke-width='2'></img>
          </a>
          <a href="#" onclick="deleteProduct(` + _product.id + `)" class="btn-action">
@@ -10,9 +11,13 @@ const addonHtml = function (_product) {
        </div>`;
 }
 
-const goToPromo =function(_idProduct, _price) {
+const goToPromo =function(_idProduct, _price, _promoPercent, _promoStart, _promoEnd) {
 
-    let queryString = `?id=` + _idProduct +`&price=`+_price;
+    let queryString = `?id=` + _idProduct +
+                         `&price=` + _price +
+                         `&promoPercent=` + _promoPercent +
+                         `&promoStart=` + _promoStart+
+                         `&promoEnd=` + _promoEnd;
 
     window.location.href="./form-add-promo" + queryString;
 }
