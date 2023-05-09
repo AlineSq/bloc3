@@ -26,12 +26,13 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Description du produit</label>
+                            <label class="form-label required">Description du produit</label>
                             <textarea id="idDescription" rows="5" class="form-control" value="description" style="height: 150px;"></textarea>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label required">Prix</label>
-                            <input id="idPrice" type="number" class="form-control" autocomplete="off"/><div> €</div>
+                        <div class="mb-3" style="display:-webkit-inline-box;">
+                            <label class="form-label required" style="margin-right:5px;">Prix</label>
+                            <input id="idPrice" type="number" class="form-control" autocomplete="off" min="0"/><div style="font-size:25px;
+    font-weight:400;"> €</div>
                         </div>
                         <div class="mb-3">
                             <div class="form-label required">Choisir une image</div>

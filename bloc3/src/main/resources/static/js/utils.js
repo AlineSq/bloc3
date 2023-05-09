@@ -139,7 +139,7 @@ const updateQuery = function(_urlEnd, _data, _successCallBack) {
     );
 }
 
-const updatePromotionQuery = function(_productId, _promotionStartDate, _promotionEndDate, _percent, _successCallBack) {
+const updatePromotionQuery = function(_roductId, _promotionStartDate, _promotionEndDate, _percent, _successCallBack) {
 
     let s = getFormatedDateForBack(_promotionStartDate);
     let e = getFormatedDateForBack(_promotionEndDate);
@@ -153,6 +153,34 @@ const updatePromotionQuery = function(_productId, _promotionStartDate, _promotio
         (_error) => {
             console.log(_error);
             notify("Une erreur s'est produite lors de la mise à jour de la promotion : "+ _error.message , 'warning');
+        }
+    );
+}
+
+const updateProductQuery = function(_data, _successCallBack) {
+
+    updateQuery(
+        'products',
+        _data,
+        _successCallBack,
+        (_error) => {
+            console.log(_error);
+            notify("Une erreur s'est produite lors de la modification du produit : "+ _error.message , 'warning');
+        }
+    );
+}
+
+const stopPromotionQuery = function(_productId, _successCallBack) {
+
+    myQuery(
+        'products/stopPromotion',
+        'POST',
+        'application/json;charset=UTF-8',
+        { "id": _productId},
+        _successCallBack,
+        (_error) => {
+            console.log(_error);
+            notify("Une erreur s'est produite lors de la suppression de la promotion : "+ _error.message , 'warning');
         }
     );
 }

@@ -40,17 +40,25 @@ public class ProductController {
     public Product updateProduct(@PathVariable Integer id, @RequestBody Product product) {
         Product existingProduct = productRepository.findById(id).orElse(null);
         if (existingProduct != null) {
-            existingProduct = product;
-            existingProduct.id = id;
+            existingProduct.promoStart = product.promoStart;
+            existingProduct.promoEnd = product.promoEnd;
+            existingProduct.promoPercent = product.promoPercent;
+            existingProduct.id = product.id;
+            existingProduct.picture = product.picture;
+            existingProduct.categoryId = product.categoryId;
+            existingProduct.price = product.price;
+            existingProduct.description = product.description;
+            existingProduct.name = product.name;
+
+            if (product.picture != null) {
+                existingProduct.picture = product.picture;
+            }
             return productRepository.save(existingProduct);
         }
         return null;
     }
 
 
-    /* @PostMapping("/updatePromotion?id={idProduct}&startDate={startDate}&endDate={endDate}&percent={percent}")
-    public Product updatePromotion(@PathVariable Integer idProduct, @PathVariable Date startDate,
-                                   @PathVariable Date endDate, @PathVariable Integer percent) { */
     @PostMapping("/updatePromotion")
     public Product updatePromotion(@RequestBody Product product) {
         Product existingProduct = productRepository.findById(product.id).orElse(null);
@@ -62,4 +70,17 @@ public class ProductController {
         }
         return null;
     }
+
+    @PostMapping("/stopPromotion")
+    public Product stopPromotion(@RequestBody Product product) {
+        Product existingProduct = productRepository.findById(product.id).orElse(null);
+        if (existingProduct != null) {
+            existingProduct.promoStart = null;
+            existingProduct.promoEnd = null;
+            existingProduct.promoPercent = null;
+            return productRepository.save(existingProduct);
+        }
+        return null;
+    }
+
 }

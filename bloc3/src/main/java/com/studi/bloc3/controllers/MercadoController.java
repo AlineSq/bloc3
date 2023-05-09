@@ -35,4 +35,7 @@ public class MercadoController {
     @GetMapping(value = "/form-add-promo")
     public String addPromotions() { return "form-add-promotions"; }
 
+    @GetMapping(value = "/form-update-product")
+    public String updateProduct() { return "form-update-product"; }
+
 }

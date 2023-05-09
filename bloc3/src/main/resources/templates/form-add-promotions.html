@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Ajout d'une catégorie</title>
+    <title>Ajout d'une promotion</title>
     <div th:replace="headerBase"></div>
     <script th:src="@{/js/form-add-promotions.js}" th:inline="javascript"></script>
 </head>
@@ -45,6 +45,7 @@
                 <div style="text-align-last: center;">
                     <a href="/admin-page" class="btn buttons ms-auto">Annuler</a>
                     <button type="submit" class="btn buttons ms-auto">Valider</button>
+                    <a href="#" onclick="stopPromotion()" class="btn buttons ms-auto">Supprimer la promotion</a>
                 </div>
             </fieldset>
         </form>
