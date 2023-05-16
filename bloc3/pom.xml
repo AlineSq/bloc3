@@ -11,6 +11,7 @@
 	<groupId>com.studi</groupId>
 	<artifactId>bloc3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>bloc3</name>
 	<description>Examen certifiant du bloc - Développement d&apos;une solution digitale avec Java</description>
 	<properties>

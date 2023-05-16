@@ -1,7 +1,9 @@
 package com.studi.bloc3api.Controllers;
 
 import com.studi.bloc3api.models.Category;
-import com.studi.bloc3api.repositories.CategoryRepository;
+import com.studi.bloc3api.services.CategoryService;
+import com.studi.bloc3api.services.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,24 +13,27 @@ import java.util.List;
 @RequestMapping("/categories")
 public class CategoryController {
 
-    CategoryController(CategoryRepository repository) {
-        this.categoryRepository = repository;
-    }
     @Autowired
-    private CategoryRepository categoryRepository;
+    private CategoryService categoryService;
+
+    @Autowired
+    private UserService userService;
 
     @PostMapping("")
-    public Category createCategory(@RequestBody Category user) {
-        return categoryRepository.save(user);
+    public Category createCategory(@RequestHeader("Authorization") String authorizationHeader,
+            @RequestBody Category _cat) {
+        userService.checkToken(authorizationHeader);
+        return categoryService.createCategory(_cat);
     }
 
     @GetMapping("")
     public List<Category> getCategory() {
-        return categoryRepository.findAll();
+        return categoryService.getCategory();
     }
 
     @DeleteMapping("{id}")
-    public void deleteCategory(@PathVariable Long id) {
-        categoryRepository.deleteById(id.intValue());
+    public void deleteCategory(@RequestHeader("Authorization") String authorizationHeader, @PathVariable Long id) {
+        userService.checkToken(authorizationHeader);
+        categoryService.deleteCategory(id.intValue());
     }
 }

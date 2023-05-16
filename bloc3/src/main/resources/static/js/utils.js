@@ -7,7 +7,10 @@ const myQuery = function(_urlEnd, _type, _contentType, _data, _successCallBack, 
             if (_successCallBack)
                 _successCallBack(result);
         },
-        error: function(xhr, status, error) {
+        error: function(xhr) {
+            if (xhr?.responseJSON?.status == 401)
+                window.location.href = "/login-mercado";
+
             if (_errorCallBack)
                 _errorCallBack(xhr?.responseJSON);
         },
@@ -30,6 +33,12 @@ const myQuery = function(_urlEnd, _type, _contentType, _data, _successCallBack, 
     $.ajax(optionQuery);
 }
 
+const logout = function() {
+    myQuery("users/logout", "POST", null, null, () => {
+        window.location.href = "/login-mercado";
+      });
+  }
+
 const deleteQuery = function(_urlEnd, _successCallBack) {
     myQuery(
         _urlEnd,
@@ -39,7 +48,7 @@ const deleteQuery = function(_urlEnd, _successCallBack) {
         _successCallBack,
         (_error) => {
             console.log(_error);
-            notify("Une erreur s'est produite lors de la suppression : "+ _error.message , 'warning');
+            notify("Une erreur s'est produite lors de la suppression : "+ _error?.message , 'warning');
         }
     );
 }
@@ -75,7 +84,7 @@ const addQuery = function(_urlEnd, _data, _successCallBack) {
         _successCallBack,
         (_error) => {
             console.log(_error);
-            notify("Une erreur s'est produite lors de la suppression : "+ _error.message , 'warning');
+            notify("Une erreur s'est produite lors de la suppression : "+ _error?.message , 'warning');
         }
     );
 }
@@ -134,12 +143,12 @@ const updateQuery = function(_urlEnd, _data, _successCallBack) {
         _successCallBack,
         (_error) => {
             console.log(_error);
-            notify("Une erreur s'est produite lors de la mise à jour : "+ _error.message , 'warning');
+            notify("Une erreur s'est produite lors de la mise à jour : "+ _error?.message , 'warning');
         }
     );
 }
 
-const updatePromotionQuery = function(_roductId, _promotionStartDate, _promotionEndDate, _percent, _successCallBack) {
+const updatePromotionQuery = function(_productId, _promotionStartDate, _promotionEndDate, _percent, _successCallBack) {
 
     let s = getFormatedDateForBack(_promotionStartDate);
     let e = getFormatedDateForBack(_promotionEndDate);
@@ -152,35 +161,7 @@ const updatePromotionQuery = function(_roductId, _promotionStartDate, _promotion
         _successCallBack,
         (_error) => {
             console.log(_error);
-            notify("Une erreur s'est produite lors de la mise à jour de la promotion : "+ _error.message , 'warning');
-        }
-    );
-}
-
-const updateProductQuery = function(_data, _successCallBack) {
-
-    updateQuery(
-        'products',
-        _data,
-        _successCallBack,
-        (_error) => {
-            console.log(_error);
-            notify("Une erreur s'est produite lors de la modification du produit : "+ _error.message , 'warning');
-        }
-    );
-}
-
-const stopPromotionQuery = function(_productId, _successCallBack) {
-
-    myQuery(
-        'products/stopPromotion',
-        'POST',
-        'application/json;charset=UTF-8',
-        { "id": _productId},
-        _successCallBack,
-        (_error) => {
-            console.log(_error);
-            notify("Une erreur s'est produite lors de la suppression de la promotion : "+ _error.message , 'warning');
+            notify("Une erreur s'est produite lors de la mise à jour de la promotion : "+ _error?.message , 'warning');
         }
     );
 }

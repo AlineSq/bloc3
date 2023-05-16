@@ -11,31 +11,49 @@ public class MercadoController {
         return "index";
     }
 
-    @GetMapping(value="/catalog")
-    public String productsCatalog() {return "catalog"; }
+    @GetMapping(value = "/catalog")
+    public String productsCatalog() {
+        return "catalog";
+    }
 
     @GetMapping(value = "/login-mercado")
-    public String login() {return "login"; }
+    public String login() {
+        return "login";
+    }
 
     @GetMapping(value = "/admin-page")
-    public String adminPage() {return "admin-page"; }
+    public String adminPage() {
+        return "admin-page";
+    }
 
     @GetMapping(value = "/form-add-product")
-    public String form() { return "form-add-product"; }
+    public String form() {
+        return "form-add-product";
+    }
 
     @GetMapping(value = "/catalog-admin")
-    public String catalogAdmin() { return "catalog-admin"; }
+    public String catalogAdmin() {
+        return "catalog-admin";
+    }
 
     @GetMapping(value = "/form-add-category")
-    public String addCategory() { return "form-add-category"; }
+    public String addCategory() {
+        return "form-add-category";
+    }
 
     @GetMapping(value = "/form-delete-category")
-    public String deleteCategory() { return "form-delete-category"; }
+    public String deleteCategory() {
+        return "form-delete-category";
+    }
 
     @GetMapping(value = "/form-add-promo")
-    public String addPromotions() { return "form-add-promotions"; }
+    public String addPromotions() {
+        return "form-add-promotions";
+    }
 
-    @GetMapping(value = "/form-update-product")
-    public String updateProduct() { return "form-update-product"; }
+    @GetMapping(value = "/update-product")
+    public String addPromotions() {
+        return "update-product";
+    }
 
 }

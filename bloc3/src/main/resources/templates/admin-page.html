@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <title>Modification de produit</title>
+    <title></title>
     <div th:replace="headerBase"></div>
 </head>
+
 <body class="theme-light body-admin">
     <div class="page">
 
@@ -16,21 +18,5 @@
         </div>
     </div>
 </body>
-</html>
 
-<script>
-    function Logout(_login) {
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:8081/logout",
-            data: _login,
-            success: function(response) {
-              alert(response.data);
-              window.location.href = "/admin-page";
-            },
-            error: function(xhr, status, error) {
-              alert("Erreur de la déconnexion : " + error);
-            }
-        });
-    }
-</script>
+</html>

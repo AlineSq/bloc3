@@ -17,7 +17,7 @@ function loadCategories() {
             select.innerHTML = html;
         }
     };
-    xhttp.open("GET", "http://localhost:8081/categories", true);
+    xhttp.open("GET", urlBase + "categories", true);
     xhttp.send();
 }
 

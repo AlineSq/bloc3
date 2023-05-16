@@ -1,7 +1,5 @@
 package com.studi.bloc3api.models;
 
-import jakarta.persistence.*;
-
 import java.util.Date;
 import java.util.UUID;
 
@@ -25,7 +23,7 @@ public class Token {
      */
     public String value;
 
-    public Token(String _login){
+    public Token(String _login) {
         this.login = _login;
         this.dateCreation = new Date();
         this.value = UUID.randomUUID().toString();

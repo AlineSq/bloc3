@@ -1,5 +1,3 @@
-let productId = null;
-
 $(document).ready(function() {
 
     $(".form_datetime").datepicker($.datepicker.regional[ "fr" ]);
@@ -7,7 +5,7 @@ $(document).ready(function() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    productId = urlParams.get("id");
+    const productId = urlParams.get("id");
     const price = urlParams.get("price");
     const promoPercent = urlParams.get("promoPercent");
     const promoStartMill = urlParams.get("promoStart");
@@ -17,12 +15,10 @@ $(document).ready(function() {
     percentElement.val(promoPercent);
 
     let dateS = new Date();
-    if (promoStartMill && promoStartMill != '0')
-        dateS.setTime(promoStartMill);
+    dateS.setTime(promoStartMill);
 
     let dateE = new Date();
-    if (promoEndMill && promoEndMill != '0')
-        dateE.setTime(promoEndMill);
+    dateE.setTime(promoEndMill);
 
     let promotionStartDateElement = $("#promotionStartDate").val(getFormatedDateForDatePicker(dateS));
     let promotionEndDateElement = $("#promotionEndDate").val(getFormatedDateForDatePicker(dateE));
@@ -52,9 +48,3 @@ $(document).ready(function() {
     });
 
 });
-
-const stopPromotion = function () {
-    stopPromotionQuery(productId, () => {
-         window.location.href = "/catalog-admin";
-    });
-}

@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: com.studi.bloc3api.Bloc3api
-
