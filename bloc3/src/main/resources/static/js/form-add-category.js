@@ -7,7 +7,10 @@ $(document).ready(function() {
         let categoryName = $("#idCategoryName").val();
 
         addCategoryQuery({"name": categoryName}, () => {
-            window.location.href = "/catalog-admin";
+            setTimeout(
+                ()=> window.location.href = "/catalog-admin",
+                2500
+             );
         });
     });
 });

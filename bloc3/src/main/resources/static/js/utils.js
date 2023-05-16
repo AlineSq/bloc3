@@ -166,6 +166,14 @@ const updatePromotionQuery = function(_productId, _promotionStartDate, _promotio
     );
 }
 
+function loadCategories(callback) {
+
+    myQuery("categories", "GET", null, null, (result) => {
+        if (callback)
+            callback(result);
+    });
+}
+
 
 
 const getFormatedDateForDatePicker = function(_date){
@@ -194,4 +202,29 @@ const parseStringToDate = function(_value){
 
 const getPromoPrice = function(_price, _percent) {
     return (_price - (_price * (_percent/100) )).toFixed(2);
+}
+
+const getProductObject = function(_idProduct, _categoryId, _name, _description, _price, _base64, _promoPercent, _promoStart, _promoEnd){
+    let product =  {};
+
+    if (_idProduct)
+        product.id = _idProduct;
+    if (_categoryId)
+        product.categoryId = _categoryId;
+    if (_name)
+        product.name = _name;
+    if (_description)
+        product.description = _description;
+    if (_price)
+        product.price = _price;
+    if (_base64)
+        product.picture = _base64;
+    if (_promoStart)
+        product.promoStart = _promoStart;
+    if (_promoEnd)
+        product.promoEnd = _promoEnd;
+    if (_promoPercent)
+        product.promoPercent = _promoPercent;
+
+    return product;
 }

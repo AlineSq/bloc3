@@ -18,8 +18,22 @@
             </div>
         </div>
 
-        <div id="idDialogDeleteProduct" title="Suppression d'un produit">
-            <p>Êtes-vous sûr(e) de vouloir supprimer le produit?</p>
-        </div>
+        <div class="modal" id="idDialogDeleteProduct" tabindex="-1">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Suppression d'un produit</h5>
+                </div>
+                <div class="modal-body">
+                    Êtes-vous sûr(e) de vouloir supprimer le produit?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn me-auto" data-bs-dismiss="modal">Annuler</button>
+                  <button type="button" class="btn btn-primary" id="idButtonValidModalDelete" data-bs-dismiss="modal">Confirmer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
     </body>
 </html>

@@ -2,27 +2,22 @@ function getHTMLCategory(_category) {
     return  `<option value="`+ _category.id +`">`+ _category.name +`</option>`;
 }
 
-function loadCategories() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
 
-        if (this.readyState == 4 && this.status == 200) {
-            var data = JSON.parse(this.responseText);
+function loadAndGenereUIForCategories() {
 
-            let select = document.getElementById("select-tags-advanced");
-            let html = "";
-            for (let i=0; data.length>i; i++) {
-                html += getHTMLCategory(data[i]);
-            }
-            select.innerHTML = html;
+    loadCategories((_result) => 
+    {
+        let select = document.getElementById("select-tags-advanced");
+        let html = "";
+        for (let i=0; _result.length>i; i++) {
+            html += getHTMLCategory(_result[i]);
         }
-    };
-    xhttp.open("GET", urlBase + "categories", true);
-    xhttp.send();
+        select.innerHTML = html;
+    });
 }
 
 $(document).ready(function() {
-    loadCategories();
+    loadAndGenereUIForCategories();
 
     $("#idFormCategory").submit(function(event) {
         event.preventDefault(); // Empêcher le formulaire de soumettre les données via POST
@@ -33,7 +28,10 @@ $(document).ready(function() {
         deleteCategoryQuery(
             idCategory,
             () => {
-                window.location.href = "/catalog-admin";
+                setTimeout(
+                    ()=> window.location.href = "/catalog-admin",
+                    2500
+                 );
             }
         );
     });

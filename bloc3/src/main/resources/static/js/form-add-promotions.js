@@ -44,7 +44,10 @@ $(document).ready(function() {
          let percent = percentElement.val();
 
          updatePromotionQuery(productId, promotionStartDate, promotionEndDate, percent, () => {
-             window.location.href = "/catalog-admin";
+            setTimeout(
+                ()=> window.location.href = "/catalog-admin",
+                2500
+             );
          });
 
     });
