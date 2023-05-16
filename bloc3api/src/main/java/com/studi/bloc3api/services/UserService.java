@@ -39,14 +39,13 @@ public class UserService {
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(foundToken.dateCreation);
-                calendar.add(Calendar.HOUR_OF_DAY, 1);
+                calendar.add(Calendar.HOUR_OF_DAY, 3);
                 Date expirationDate = calendar.getTime();
                 Date actualDate = new Date();
                 if (actualDate.before(expirationDate)) {
                     foundToken.dateCreation = new Date();
                     return "true";
                 }
-
             }
         }
         throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);

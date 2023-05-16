@@ -30,10 +30,8 @@ h2 {
     color: #99911F !important;
 }
 
-.buttons {
+.btn-primary {
     background: #B5B175 !important;
-    color: white !important;
-    height: 50px;
     font-size: 1,5rem !important;
     font-weight: 700 !important;
 }

@@ -15,10 +15,12 @@ $(document).ready(function() {
     percentElement.val(promoPercent);
 
     let dateS = new Date();
-    dateS.setTime(promoStartMill);
+    if (promoStartMill != "0")
+        dateS.setTime(promoStartMill);
 
     let dateE = new Date();
-    dateE.setTime(promoEndMill);
+    if (promoEndMill != "0")
+        dateE.setTime(promoEndMill);
 
     let promotionStartDateElement = $("#promotionStartDate").val(getFormatedDateForDatePicker(dateS));
     let promotionEndDateElement = $("#promotionEndDate").val(getFormatedDateForDatePicker(dateE));

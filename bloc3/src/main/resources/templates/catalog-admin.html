@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogue</title>
-</head>
-<body>
-    
-</body>
-</html>
-<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Modification de produit</title>
+        <title>Catalogue</title>
         <div th:replace="headerBase"></div>
         <script th:src="@{/js/addon-admin.js}" th:inline="javascript"></script>
     </head>
@@ -27,6 +16,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div id="idDialogDeleteProduct" title="Suppression d'un produit">
+            <p>Êtes-vous sûr(e) de vouloir supprimer le produit?</p>
         </div>
     </body>
 </html>

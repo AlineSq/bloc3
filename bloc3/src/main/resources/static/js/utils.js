@@ -186,8 +186,10 @@ const getFormatedDateForBack = function(_date) {
 }
 
 const parseStringToDate = function(_value){
-    var timestamp = Date.parse(_value);
-    return new Date(timestamp);
+    //var timestamp = Date.parse(_value);
+    //return new Date(_value);
+    let dateParts = _value.split("/");
+    return new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
 }
 
 const getPromoPrice = function(_price, _percent) {

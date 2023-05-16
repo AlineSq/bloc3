@@ -47,13 +47,13 @@ public class MercadoController {
     }
 
     @GetMapping(value = "/form-add-promo")
-    public String addPromotions() {
+    public String addPromo() {
         return "form-add-promotions";
     }
 
-    @GetMapping(value = "/update-product")
-    public String addPromotions() {
-        return "update-product";
+    @GetMapping(value = "/form-update-product")
+    public String updateProduct() {
+        return "form-update-product";
     }
 
 }
