@@ -62,16 +62,28 @@ $(document).ready(function() {
         let picture = fileInput[0].files[0];
 
         let afterLoadedFile = (base64) => {
-            addProductQuery(
-                getProductObject(originalProductId, category, name, description, price, base64),
-                () => {
+            let prod = getProductObject(null, category, name, description, price, base64);
+
+            if (originalProductId) {
+                prod.id = originalProductId;
+
+                updateProductQuery(prod, () => {
+                    disableAllButtonForWaitReload();
                     setTimeout(
-                       ()=> window.location.href = "/catalog-admin",
-                       2500
+                        ()=> window.location.href = "/catalog-admin",
+                        2500
+                     );
+                });
+            } else {
+                addProductQuery(prod, () => {
+                    disableAllButtonForWaitReload();
+                    setTimeout(
+                        ()=> window.location.href = "/catalog-admin",
+                        2500
                     );
-                }
-            );
-        };
+                });
+            }
+        }
 
         if(picture) {
             console.log("fichier à charger");
@@ -87,7 +99,5 @@ $(document).ready(function() {
             console.log("Pas de fichier à charger");
             afterLoadedFile();
         }
-
-        
     });
 });

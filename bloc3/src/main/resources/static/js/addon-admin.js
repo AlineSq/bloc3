@@ -5,7 +5,7 @@ const addonHtml = function (_product) {
          <a href='#' onclick='goToPromo(` + _product.id + `,` + _product.price + `,` + _product.promoPercent + `,` + _product.promoStart.getTime() + `,` + _product.promoEnd.getTime() + `)' class='btn-action'>
             <img src='/pictures/promo.png' class='icon' width='24' height='24' viewBox='0 0 24 24' stroke-width='2'></img>
          </a>
-         <a href="#" onclick="updateProduct(` + _product.id + `,` + _product.categoryId + `,'` + encodeURIComponent(_product.name) + `','` + encodeURIComponent(_product.description) + `',` + _product.price + `,` + _product.promoPercent + `,` + _product.promoStart.getTime() + `,` + _product.promoEnd.getTime() +  `)" class="btn-action">
+         <a href="#" onclick="updateProduct(` + _product.id + `,` + _product.categoryId + `,'` + encodeURIComponent(_product.name).replace(/'/g, '%27') + `','` + encodeURIComponent(_product.description).replace(/'/g, '%27') + `',` + _product.price + `,` + _product.promoPercent + `,` + _product.promoStart.getTime() + `,` + _product.promoEnd.getTime() +  `)" class="btn-action">
             <img src='/pictures/edit.png' class='icon' width='24' height='24' viewBox='0 0 24 24' stroke-width='2'></img>
          </a> 
          <a href="#" onclick="deleteProduct(` + _product.id + `)" class="btn-action">

@@ -43,7 +43,8 @@ $(document).ready(function() {
          let promotionEndDate = parseStringToDate(promotionEndDateElement.val());
          let percent = percentElement.val();
 
-         updatePromotionQuery(productId, promotionStartDate, promotionEndDate, percent, () => {
+         changePromotionQuery(productId, promotionStartDate, promotionEndDate, percent, () => {
+            disableAllButtonForWaitReload();
             setTimeout(
                 ()=> window.location.href = "/catalog-admin",
                 2500

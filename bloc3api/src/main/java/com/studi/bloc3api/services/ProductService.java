@@ -3,6 +3,7 @@ package com.studi.bloc3api.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Service;
 
 import com.studi.bloc3api.models.Product;
@@ -30,8 +31,14 @@ public class ProductService {
     public Product updateProduct(Integer id, Product product) {
         Product existingProduct = productRepository.findById(id).orElse(null);
         if (existingProduct != null) {
-            existingProduct = product;
-            existingProduct.id = id;
+            existingProduct.name = product.name;
+            existingProduct.description = product.description;
+            existingProduct.categoryId = product.categoryId;
+            existingProduct.price = product.price;
+            
+            if (product.picture != null && product.picture.length()>0)
+                existingProduct.picture = product.picture;
+
             return productRepository.save(existingProduct);
         }
         return null;

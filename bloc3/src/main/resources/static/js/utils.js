@@ -137,7 +137,7 @@ const loginQuery = function(_login, _password, _successCallBack) {
 const updateQuery = function(_urlEnd, _data, _successCallBack) {
     myQuery(
         _urlEnd,
-        'UPDATE',
+        'PUT',
         'application/json;charset=UTF-8',
         _data,
         _successCallBack,
@@ -148,7 +148,20 @@ const updateQuery = function(_urlEnd, _data, _successCallBack) {
     );
 }
 
-const updatePromotionQuery = function(_productId, _promotionStartDate, _promotionEndDate, _percent, _successCallBack) {
+const updateProductQuery = function(_data, _successCallBack) {
+    updateQuery(
+        'products/'+ _data.id,
+        _data,
+        (result) => {
+            notify("Votre produit a été mis à jour !", 'success');
+
+            if (_successCallBack)
+                _successCallBack(result);
+        }
+    );
+ }
+
+const changePromotionQuery = function(_productId, _promotionStartDate, _promotionEndDate, _percent, _successCallBack) {
 
     let s = getFormatedDateForBack(_promotionStartDate);
     let e = getFormatedDateForBack(_promotionEndDate);
@@ -227,4 +240,8 @@ const getProductObject = function(_idProduct, _categoryId, _name, _description, 
         product.promoPercent = _promoPercent;
 
     return product;
+}
+
+const disableAllButtonForWaitReload = function() {
+    $('.btn').addClass("disabled");
 }

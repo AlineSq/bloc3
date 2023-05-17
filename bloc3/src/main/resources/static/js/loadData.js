@@ -20,18 +20,18 @@ function getHTMLProduct(_categoryId, _product) {
     }
 
 
-    return `<div class="card card-sm col-sm-4 col-lg-3 h-50 d-inline-block">
-                <div class="card-header">
+    return `<div class="col-sm-4 col-lg-3">
+                <div class="card">
+                    <div class="card-header">
                        <h3 class="card-title">`+ _product.name +`</h3>
                        `+ specificButtons +`
-
-               </div>
-                <div class="card-body">
-                    <p class="card-text mb-auto">`+ _product.description +`</p>
-                    <div>`+ htmlPrice + `</div>
-                    <div class="img-thumbnail"><img src="`+ picInBytes +`" class="card-img-bottom"></div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text mb-auto">`+ _product.description +`</p>
+                        <div>`+ htmlPrice + `</div>
+                        <div class="img-thumbnail"><img src="`+ picInBytes +`" class="card-img-bottom"></div>
+                    </div>
                 </div>
-
             </div>`;
 }
 

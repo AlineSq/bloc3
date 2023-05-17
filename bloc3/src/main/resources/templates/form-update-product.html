@@ -16,12 +16,12 @@
                 <form id="idFormProduct" enctype="multipart/form-data">
                     <fieldset class="form-fieldset">
                         <div class="mb-3">
-                            <label class="form-label required">Nom du produit</label>
-                            <input id="idProductName" type="text" class="form-control" autocomplete="off">
+                            <label class="form-label">Nom du produit</label>
+                            <input id="idProductName" type="text" class="form-control" autocomplete="off" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label required">Catégorie</label>
-                            <select type="int" class="form-select tomselected ts-hidden-accessible" id="select-tags-advanced" tabindex="-1">
+                            <label class="form-label">Catégorie</label>
+                            <select type="int" class="form-select tomselected ts-hidden-accessible" id="select-tags-advanced" tabindex="-1" required>
                                 <!-- données des catégories chargées -->
                             </select>
                         </div>
@@ -30,16 +30,16 @@
                             <textarea id="idDescription" rows="5" class="form-control" value="description" style="height: 150px;"></textarea>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label required">Prix</label>
+                            <label class="form-label">Prix</label>
                             <div class="d-flex align-items-baseline">
-                                <input id="idPrice" type="number" class="form-control" autocomplete="off"/>
+                                <input id="idPrice" type="number" class="form-control" autocomplete="off" required/>
                                 &nbsp;€
                             </div>
                         </div>
                         <div class="mb-3">
-                            <div class="form-label required">Choisir une image</div>
+                            <div class="form-label">Choisir une image</div>
                             <div style="font-weight:300; margin-bottom: 0.5rem;"> Formats acceptés : .jpg, .jpeg, .png</div>
-                            <input type="file" class="form-control" id="idPicture" accept=".jpg, .jpeg, .png">
+                            <input type="file" class="form-control" id="idPicture" accept=".jpg, .jpeg, .png" required>
                         </div>
                         <div style="text-align-last: center;">
                             <a href="/admin-page" class="btn  ms-auto">Annuler</a>

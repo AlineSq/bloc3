@@ -7,6 +7,7 @@ $(document).ready(function() {
         let categoryName = $("#idCategoryName").val();
 
         addCategoryQuery({"name": categoryName}, () => {
+            disableAllButtonForWaitReload();
             setTimeout(
                 ()=> window.location.href = "/catalog-admin",
                 2500

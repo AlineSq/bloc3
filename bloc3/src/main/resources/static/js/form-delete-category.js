@@ -28,6 +28,7 @@ $(document).ready(function() {
         deleteCategoryQuery(
             idCategory,
             () => {
+                disableAllButtonForWaitReload();
                 setTimeout(
                     ()=> window.location.href = "/catalog-admin",
                     2500
