@@ -99,6 +99,19 @@ h2 {
     min-height: 400px !important;
 }
 
+@media (min-width: 767px) {
+    #notreCatalogue {
+        font-size: 2rem;
+        height: 80px;
+}
+
+@media (max-width: 767px) {
+    #notreCatalogue {
+        font-size: initial;
+        height: initial;
+    }
+}
+
 
 /* Specific mode */ 
 .no-close .ui-dialog-titlebar-close {
