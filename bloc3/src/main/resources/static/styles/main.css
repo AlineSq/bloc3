@@ -70,6 +70,12 @@ h2 {
     font-weight: 700;
 }
 
+/* Promotions */
+
+#idPercent {
+    width: 95%;
+}
+
 .promo-price {
     font-weight: 700;
     color: red;
