@@ -3,7 +3,6 @@ package com.studi.bloc3api.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Service;
 
 import com.studi.bloc3api.models.Product;
