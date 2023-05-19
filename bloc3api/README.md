@@ -17,55 +17,31 @@ faites partie, une ESN spécialisée dans ce domaine. Mercadona a nommé dans le
 une personne qui va se charger de présenter de projet à PromoWeb, il se nomme José.
 
 
-## Pour commencer
-
-Entrez ici les instructions pour bien débuter avec votre projet...
-
-- <a href="https://github.com/AlineSq/bloc3">Lien github du projet</a>
- 
 ### Pré-requis
 
 Ce qu'il est requis pour commencer avec votre projet...
 
-- HTML, CSS
-- Javascript
-- Java
+- Java 17, Springboot, JUnit 5
+- PostgreSQL
 - Requêtes Ajax
-
 
 ### Installation
 
-Les étapes pour installer votre programme....
-
-Dites ce qu'il faut faire...
-
-_exemple_: Executez la commande ``telnet mapscii.me`` pour commencer ensuite [...]
-
-
-Ensuite vous pouvez montrer ce que vous obtenez au final...
+Installer les programmes suivants :
+- JDK 17
+- Maven
+- un IDE
+- PostgreSQL
 
 ## Démarrage
 
-Dites comment faire pour lancer votre projet
-
-## Fabriqué avec
-
-- <a href="https://tabler.io/](https://www.jetbrains.com/fr-fr/idea/">IntelliJ IDEA</a>
-- <a href="https://tabler.io/">Tabler</a>
-- <a href="https://tabler.io/](https://getbootstrap.com/">Bootstrap</a>
-
-## Versions
-
-**JAVA 17.0.6
-
-Liste des versions : [Cliquer pour afficher](https://github.com/your/project-name/tags)
-_(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_
+- Récupérer les sources du projet
+- Télécharger les dépendances grâce à Maven
+- Configurer l'accès à la base de données
+- <a href="https://github.com/AlineSq/bloc3/blob/master/bloc3api/BDD/Creation%20de%20la%20bdd.sql">Exécuter la création de la base de données</a>
+- Lancer / déployer l'application
 
 ## Auteurs
 
 Aline Squarzoni - étudiante en Bachelor Développeur d'application Java 2022-2027 chez Studi
 Promotion BROOKER
-
-## License
-
-
