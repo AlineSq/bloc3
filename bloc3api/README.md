@@ -1,6 +1,6 @@
 # Bloc 3 - Développement d'une solution digitale avec JAVA - Projet Mercadona
 
-PARTIE FRONT DE L'APPLICATION
+PARTIE BACK DE L'APPLICATION
 
 ### Pré-requis
 
