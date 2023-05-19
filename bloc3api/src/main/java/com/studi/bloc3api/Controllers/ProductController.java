@@ -26,8 +26,8 @@ public class ProductController {
     }
 
     @GetMapping("")
-    public List<Product> getProduct() {
-        return productService.getProduct();
+    public List<Product> getProducts() {
+        return productService.getProducts();
     }
 
     @DeleteMapping("{id}")
