@@ -21,8 +21,8 @@ une personne qui va se charger de présenter de projet à PromoWeb, il se nomme 
 
 Choisissez sur quel projet vous souhaitez connaître :
 
-- <a href="https://github.com/AlineSq/bloc3">Lien github du projet front</a>
-- <a href="https://github.com/AlineSq/bloc3api">Lien github du projet back</a>
+- <a href="https://github.com/AlineSq/bloc3/bloc3">Lien github du projet front</a>
+- <a href="https://github.com/AlineSq/bloc3/bloc3api">Lien github du projet back</a>
 
 ## Fabriqué avec
 
