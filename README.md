@@ -19,53 +19,22 @@ une personne qui va se charger de présenter de projet à PromoWeb, il se nomme 
 
 ## Pour commencer
 
-Entrez ici les instructions pour bien débuter avec votre projet...
+Choisissez sur quel projet vous souhaitez connaître :
 
-- <a href="https://github.com/AlineSq/bloc3">Lien github du projet</a>
- 
-### Pré-requis
-
-Ce qu'il est requis pour commencer avec votre projet...
-
-- HTML, CSS
-- Javascript
-- Java
-- Requêtes Ajax
-
-
-### Installation
-
-Les étapes pour installer votre programme....
-
-Dites ce qu'il faut faire...
-
-_exemple_: Executez la commande ``telnet mapscii.me`` pour commencer ensuite [...]
-
-
-Ensuite vous pouvez montrer ce que vous obtenez au final...
-
-## Démarrage
-
-Dites comment faire pour lancer votre projet
+- <a href="https://github.com/AlineSq/bloc3">Lien github du projet front</a>
+- <a href="https://github.com/AlineSq/bloc3api">Lien github du projet back</a>
 
 ## Fabriqué avec
 
-- <a href="https://tabler.io/](https://www.jetbrains.com/fr-fr/idea/">IntelliJ IDEA</a>
+- <a href="https://code.visualstudio.com/">IntelliJ IDEA</a>
 - <a href="https://tabler.io/">Tabler</a>
-- <a href="https://tabler.io/](https://getbootstrap.com/">Bootstrap</a>
+- <a href="https://getbootstrap.com/">Bootstrap</a>
 
 ## Versions
 
 **JAVA 17.0.6
 
-Liste des versions : [Cliquer pour afficher](https://github.com/your/project-name/tags)
-_(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_
-
 ## Auteurs
 
 Aline Squarzoni - étudiante en Bachelor Développeur d'application Java 2022-2027 chez Studi
 Promotion BROOKER
-
-## License
-
-
