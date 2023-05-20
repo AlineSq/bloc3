@@ -1,49 +1,81 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>Ajouter une promotion</title>
-        <div th:replace="headerBase"></div>
-        <script th:src="@{/js/controlAuthentification.js}" th:inline="javascript"></script>
-        <script th:src="@{/js/form-add-promotions.js}" th:inline="javascript"></script>
-    </head>
-    <body>
-        <div class="page page-center">
-            <div class="container container-tight py-4">
-                <h2 class="text-center mb-4">Ajouter une promotion</h2>
-                <div class="card">
-                </div>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter une promotion</title>
+    <div th:replace="headerBase"></div>
+    <script th:src="@{/js/controlAuthentification.js}" th:inline="javascript"></script>
+    <script th:src="@{/js/form-add-promotions.js}" th:inline="javascript"></script>
+</head>
+
+<body>
+    <div class="page page-center">
+        <div class="container container-tight py-4">
+            <h2 class="text-center mb-4">Ajouter une promotion</h2>
+            <div class="card">
                 <div class="card-body">
                     <form id="idFormPromotion" enctype="multipart/form-data">
                         <fieldset class="form-fieldset">
                             <div class="mb-3">
-                                <label class="form-label">Pourcentage de promotion</label>
+                                <label class="form-label required">Pourcentage de promotion</label>
                                 <div class="d-flex align-items-baseline">
-                                    <input id="idPercent" type="number" class="form-control" autocomplete="off" required/>
+                                    <input id="idPercent" type="number" class="form-control" autocomplete="off"
+                                        required />
                                     &nbsp;%
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Prix de départ : <span id="idBasePrice"></span> €</label>
-                                <label class="form-label promo-price">Prix avec la promotion : <span id="idEndPrice"></span> €</label>
-                                <br/>
+                                <label class="form-label promo-price">Prix avec la promotion : <span
+                                        id="idEndPrice"></span>
+                                    €</label>
+                                <br />
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Date de début de la promotion</label>
+                                <label class="form-label required">Date de début de la promotion</label>
                                 <div class="input-icon mb-2">
-                                <input type="text"  class="form-control form_datetime" placeholder="Sous le format jj-mm-aaaa" id="promotionStartDate" autocomplete="off">
-                                <span class="input-icon-addon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M16 3l0 4"></path><path d="M8 3l0 4"></path><path d="M4 11l16 0"></path><path d="M11 15l1 0"></path><path d="M12 15l0 3"></path></svg>
-                                </span>
+                                    <input type="text" class="form-control form_datetime"
+                                        placeholder="Sous le format jj-mm-aaaa" id="promotionStartDate"
+                                        autocomplete="off">
+                                    <span class="input-icon-addon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path
+                                                d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z">
+                                            </path>
+                                            <path d="M16 3l0 4"></path>
+                                            <path d="M8 3l0 4"></path>
+                                            <path d="M4 11l16 0"></path>
+                                            <path d="M11 15l1 0"></path>
+                                            <path d="M12 15l0 3"></path>
+                                        </svg>
+                                    </span>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Date de fin de la promotion</label>
+                                <label class="form-label required">Date de fin de la promotion</label>
                                 <div class="input-icon mb-2">
-                                <input type="text" class="form-control form_datetime" placeholder="Sous le format jj-mm-aaaa" id="promotionEndDate" autocomplete="off">
-                                <span class="input-icon-addon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M16 3l0 4"></path><path d="M8 3l0 4"></path><path d="M4 11l16 0"></path><path d="M11 15l1 0"></path><path d="M12 15l0 3"></path></svg>
-                                </span>
+                                    <input type="text" class="form-control form_datetime"
+                                        placeholder="Sous le format jj-mm-aaaa" id="promotionEndDate"
+                                        autocomplete="off">
+                                    <span class="input-icon-addon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path
+                                                d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z">
+                                            </path>
+                                            <path d="M16 3l0 4"></path>
+                                            <path d="M8 3l0 4"></path>
+                                            <path d="M4 11l16 0"></path>
+                                            <path d="M11 15l1 0"></path>
+                                            <path d="M12 15l0 3"></path>
+                                        </svg>
+                                    </span>
                                 </div>
                             </div>
                             <div style="text-align-last: center;">
@@ -55,5 +87,7 @@
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

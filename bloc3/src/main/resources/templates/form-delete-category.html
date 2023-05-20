@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="ff">
-    <head>
-        <meta charset="UTF-8">
-        <title>Supprimer une catégorie</title>
-        <div th:replace="headerBase"></div>
-        <script th:src="@{/js/controlAuthentification.js}" th:inline="javascript"></script>
-        <script th:src="@{/js/form-delete-category.js}" th:inline="javascript"></script>
-    </head>
-    <body>
-        <div class="page page-center">
-            <div class="container container-tight py-4">
-                <h2 class="text-center mb-4">Supprimer une catégorie de produit</h2>
-                <div class="card">
-                </div>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Supprimer une catégorie</title>
+    <div th:replace="headerBase"></div>
+    <script th:src="@{/js/controlAuthentification.js}" th:inline="javascript"></script>
+    <script th:src="@{/js/form-delete-category.js}" th:inline="javascript"></script>
+</head>
+
+<body>
+    <div class="page page-center">
+        <div class="container container-tight py-4">
+            <h2 class="text-center mb-4">Supprimer une catégorie de produit</h2>
+            <div class="card">
                 <div class="card-body">
                     <form id="idFormCategory" enctype="multipart/form-data">
                         <fieldset class="form-fieldset">
                             <div class="mb-3">
-                                <label class="form-label">Nom de la catégorie à supprimer</label>
-                                <select type="int" class="form-select tomselected ts-hidden-accessible" id="select-tags-advanced" tabindex="-1">
+                                <label class="form-label required">Nom de la catégorie à supprimer</label>
+                                <select type="int" required class="form-select tomselected ts-hidden-accessible"
+                                    id="select-tags-advanced" tabindex="-1">
                                     <!-- données des catégories chargées -->
                                 </select>
                             </div>
@@ -31,5 +33,7 @@
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

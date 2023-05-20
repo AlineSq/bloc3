@@ -96,7 +96,6 @@ const deleteProductQuery = function(_id, _successCallBack) {
     deleteQuery(
         'products/' + _id,
          (_result) => {
-            debugger;
              if (_successCallBack)
                   _successCallBack(_result);
              notify("Votre produit a bien été supprimé !", 'success');
@@ -204,7 +203,6 @@ const checkQuery = function(_successCallBack) {
         },
         (_error) => {
             console.log(_error);
-            notify(_error.message);
         }
     );
 }
@@ -261,7 +259,12 @@ const changePromotionQuery = function(_productId, _promotionStartDate, _promotio
         'POST',
         'application/json;charset=UTF-8',
         { "id": _productId, "promoStart": s, "promoEnd": e, "promoPercent":_percent},
-        _successCallBack,
+        (_result) => {
+            notify("Votre promotion a bien été mise à jour !", 'success');
+            
+            if (_successCallBack)
+               _successCallBack(_result);
+        },
         (_error) => {
             console.log(_error);
             notify("Une erreur s'est produite lors de la mise à jour de la promotion : "+ _error?.message , 'warning');
