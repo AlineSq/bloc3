@@ -3,7 +3,6 @@ package com.studi.bloc3api.Controllers;
 import com.studi.bloc3api.services.ProductService;
 import com.studi.bloc3api.services.UserService;
 import com.studi.bloc3api.models.Product;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,11 +11,20 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
 
-    @Autowired
     private ProductService productService;
-
-    @Autowired
     private UserService userService;
+
+    public ProductController(ProductService _productService, UserService _userService) {
+        if(_productService != null)
+            productService = _productService;
+        else
+            productService = new ProductService();
+
+        if (_userService != null)
+            userService = _userService;
+        else
+            userService = new UserService();
+    }
 
     @PostMapping("")
     public Product createProduct(@RequestHeader("Authorization") String authorizationHeader,

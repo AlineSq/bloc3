@@ -14,12 +14,7 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public ProductRepository getProductRepository() {
-        return productRepository;
-    }
-
     public Product createProduct(Product _product) {
-
         return productRepository.save(_product);
     }
 
@@ -38,10 +33,8 @@ public class ProductService {
             existingProduct.description = product.description;
             existingProduct.categoryId = product.categoryId;
             existingProduct.price = product.price;
-            
-            if (product.picture != null && product.picture.length()>0)
+            if (product.picture != null && product.picture.length() > 0)
                 existingProduct.picture = product.picture;
-
             return productRepository.save(existingProduct);
         }
         return null;

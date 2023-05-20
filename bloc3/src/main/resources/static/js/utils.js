@@ -1,4 +1,12 @@
-
+/**
+ * Fonction générique permettant simplifier la création d'une requête
+ * @param {*} _urlEnd 
+ * @param {*} _type 
+ * @param {*} _contentType 
+ * @param {*} _data 
+ * @param {*} _successCallBack 
+ * @param {*} _errorCallBack 
+ */
 const myQuery = function(_urlEnd, _type, _contentType, _data, _successCallBack, _errorCallBack) {
     let optionQuery = {
         url: urlBase + _urlEnd,
@@ -33,12 +41,22 @@ const myQuery = function(_urlEnd, _type, _contentType, _data, _successCallBack, 
     $.ajax(optionQuery);
 }
 
+
+/**
+ * Fonction permettant de se déconnecter
+ */
 const logout = function() {
     myQuery("users/logout", "POST", null, null, () => {
         window.location.href = "/login-mercado";
       });
   }
 
+
+/**
+ * Fonction permettant de déclencer un requête de suppression
+ * @param {*} _urlEnd 
+ * @param {*} _successCallBack 
+ */ 
 const deleteQuery = function(_urlEnd, _successCallBack) {
     myQuery(
         _urlEnd,
@@ -53,6 +71,11 @@ const deleteQuery = function(_urlEnd, _successCallBack) {
     );
 }
 
+/**
+ * Fonction permettant de supprimer une catégorie
+ * @param {*} _id 
+ * @param {*} _successCallBack 
+ */
 const deleteCategoryQuery = function(_id, _successCallBack) {
     deleteQuery(
         'categories/' + _id,
@@ -64,10 +87,16 @@ const deleteCategoryQuery = function(_id, _successCallBack) {
     );
 }
 
+/**
+ * Fonction permettant de supprimer un produit
+ * @param {*} _id 
+ * @param {*} _successCallBack 
+ */
 const deleteProductQuery = function(_id, _successCallBack) {
     deleteQuery(
         'products/' + _id,
          (_result) => {
+            debugger;
              if (_successCallBack)
                   _successCallBack(_result);
              notify("Votre produit a bien été supprimé !", 'success');
@@ -75,6 +104,12 @@ const deleteProductQuery = function(_id, _successCallBack) {
     );
 }
 
+/**
+ * Fonction permettant de déclencher une requête d'ajout
+ * @param {*} _urlEnd 
+ * @param {*} _data 
+ * @param {*} _successCallBack 
+ */
 const addQuery = function(_urlEnd, _data, _successCallBack) {
     myQuery(
         _urlEnd,
@@ -89,6 +124,11 @@ const addQuery = function(_urlEnd, _data, _successCallBack) {
     );
 }
 
+/**
+ * Fonction permettant d'ajouter un produit
+ * @param {!} _data 
+ * @param {*} _successCallBack 
+ */
 const addProductQuery = function(_data, _successCallBack) {
     addQuery(
         'products',
@@ -104,6 +144,11 @@ const addProductQuery = function(_data, _successCallBack) {
     );
 }
 
+/**
+ * Fonction permettant d'ajouter un produit
+ * @param {*} _data 
+ * @param {*} _successCallBack 
+ */
 const addCategoryQuery = function(_data, _successCallBack) {
      addQuery(
          'categories',
@@ -116,6 +161,12 @@ const addCategoryQuery = function(_data, _successCallBack) {
      );
 }
 
+/**
+ * Fonction permettant de se loguer
+ * @param {*} _login 
+ * @param {*} _password 
+ * @param {*} _successCallBack 
+ */
 const loginQuery = function(_login, _password, _successCallBack) {
     myQuery(
         'users/login',
@@ -134,6 +185,37 @@ const loginQuery = function(_login, _password, _successCallBack) {
     );
 }
 
+
+
+/**
+ * Fonction permettant de se loguer
+ * @param {*} _login 
+ * @param {*} _password 
+ * @param {*} _successCallBack 
+ */
+const checkQuery = function(_successCallBack) {
+    myQuery(
+        'users/check',
+        'POST',
+        'application/json;charset=UTF-8',
+        (_result) => {
+            if (_successCallBack)
+                _successCallBack(_result);
+        },
+        (_error) => {
+            console.log(_error);
+            notify(_error.message);
+        }
+    );
+}
+
+
+/**
+ * Fonction permettant de déclencher une méthode de mise à jour
+ * @param {*} _urlEnd 
+ * @param {*} _data 
+ * @param {*} _successCallBack 
+ */
 const updateQuery = function(_urlEnd, _data, _successCallBack) {
     myQuery(
         _urlEnd,
@@ -148,6 +230,11 @@ const updateQuery = function(_urlEnd, _data, _successCallBack) {
     );
 }
 
+/**
+ * Fonction permettant de mettre à jour un produit
+ * @param {*} _data 
+ * @param {*} _successCallBack 
+ */
 const updateProductQuery = function(_data, _successCallBack) {
     updateQuery(
         'products/'+ _data.id,
@@ -161,6 +248,9 @@ const updateProductQuery = function(_data, _successCallBack) {
     );
  }
 
+ /**
+  * Fonction permettant de modifier une promotion
+  */
 const changePromotionQuery = function(_productId, _promotionStartDate, _promotionEndDate, _percent, _successCallBack) {
 
     let s = getFormatedDateForBack(_promotionStartDate);
@@ -179,6 +269,10 @@ const changePromotionQuery = function(_productId, _promotionStartDate, _promotio
     );
 }
 
+/**
+ * Fonction permettant de charger les catégories
+ * @param {*} callback 
+ */
 function loadCategories(callback) {
 
     myQuery("categories", "GET", null, null, (result) => {
@@ -188,7 +282,11 @@ function loadCategories(callback) {
 }
 
 
-
+/**
+ * Fonction permettant de convertir une date pour le datepicker de JQuery
+ * @param {*} _date 
+ * @returns 
+ */
 const getFormatedDateForDatePicker = function(_date){
     let month = ('0' + (_date.getMonth() + 1)).slice(-2);
     let day = ('0' + _date.getDate()).slice(-2);
@@ -196,7 +294,11 @@ const getFormatedDateForDatePicker = function(_date){
     return day + '/' + month + '/' + _date.getFullYear();
 }
 
-
+/**
+ * Fonction permettant de convertir une date valide pour le back (date ISO)
+ * @param {*} _date 
+ * @returns 
+ */
 const getFormatedDateForBack = function(_date) {
     let month = ('0' + (_date.getMonth() + 1)).slice(-2);
     let day = ('0' + _date.getDate()).slice(-2);
@@ -206,6 +308,9 @@ const getFormatedDateForBack = function(_date) {
     return _date.getFullYear() + '-' + month + '-' + day + 'T' + hours + ':' + minutes + ':' + seconds;
 }
 
+/**
+ * Fonction permettant de convertir un string en date
+ */
 const parseStringToDate = function(_value){
     //var timestamp = Date.parse(_value);
     //return new Date(_value);
@@ -213,10 +318,26 @@ const parseStringToDate = function(_value){
     return new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
 }
 
+/**
+ * Fonction permettant de calculer le prix après réduction
+ */
 const getPromoPrice = function(_price, _percent) {
     return (_price - (_price * (_percent/100) )).toFixed(2);
 }
 
+/**
+ * Fonction permettant de générer un objet de type produit
+ * @param {*} _idProduct 
+ * @param {*} _categoryId 
+ * @param {*} _name 
+ * @param {*} _description 
+ * @param {*} _price 
+ * @param {*} _base64 
+ * @param {*} _promoPercent 
+ * @param {*} _promoStart 
+ * @param {*} _promoEnd 
+ * @returns 
+ */
 const getProductObject = function(_idProduct, _categoryId, _name, _description, _price, _base64, _promoPercent, _promoStart, _promoEnd){
     let product =  {};
 
@@ -242,6 +363,9 @@ const getProductObject = function(_idProduct, _categoryId, _name, _description, 
     return product;
 }
 
+/**
+ * Fonction permettant de désactiver tous les boutons actifs de l'UI
+ */
 const disableAllButtonForWaitReload = function() {
     $('.btn').addClass("disabled");
 }

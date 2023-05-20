@@ -14,7 +14,17 @@ const addonHtml = function (_product) {
        </div>`;
 }
 
-
+/**
+ * Fonction permettant de mettre à jour un produit
+ * @param {*} _idProduct 
+ * @param {*} _categoryId 
+ * @param {*} _name 
+ * @param {*} _description 
+ * @param {*} _price 
+ * @param {*} _promoPercent 
+ * @param {*} _promoStart 
+ * @param {*} _promoEnd 
+ */
 const updateProduct = function (_idProduct, _categoryId, _name, _description, _price, _promoPercent, _promoStart, _promoEnd) {
     let queryString = `?id=` + _idProduct +
                         `&categoryId=` + _categoryId +
@@ -28,7 +38,14 @@ const updateProduct = function (_idProduct, _categoryId, _name, _description, _p
     window.location.href="./form-update-product" + queryString;
 }
 
-
+/**
+ * Fonction permettant d'éditer une promotion sur un produit
+ * @param {*} _idProduct 
+ * @param {*} _price 
+ * @param {*} _promoPercent 
+ * @param {*} _promoStart 
+ * @param {*} _promoEnd 
+ */
 const goToPromo = function(_idProduct, _price, _promoPercent, _promoStart, _promoEnd) {
 
     let queryString = `?id=` + _idProduct +
@@ -40,6 +57,10 @@ const goToPromo = function(_idProduct, _price, _promoPercent, _promoStart, _prom
     window.location.href="./form-add-promo" + queryString;
 }
 
+/**
+ * Fonction persmettant de supprimer un produit
+ * @param {*} _idProduct 
+ */
 const deleteProduct = function(_idProduct) {
 
     $('#idDialogDeleteProduct').on('click', '#idButtonValidModalDelete', function(_event, _e1, _3e) {

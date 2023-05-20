@@ -1,7 +1,16 @@
+/**
+ * Fonction permettant de donner le HTML d'une catégorie
+ * @param {*} _category 
+ * @returns 
+ */
 function getHTMLCategory(_category) {
     return  `<option value="`+ _category.id +`">`+ _category.name +`</option>`;
 }
 
+/**
+ * Fonction permettant de charger les catégories et de générer le html des catégories
+ * @param {*} _callback 
+ */
 function loadAndGenereUIForCategories(_callback) {
 
     loadCategories((_result) => 

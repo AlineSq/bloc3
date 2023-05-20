@@ -1,3 +1,6 @@
+/**
+ * Fonctions permettant d'ajouter une promotion
+ */
 $(document).ready(function() {
 
     $(".form_datetime").datepicker($.datepicker.regional[ "fr" ]);

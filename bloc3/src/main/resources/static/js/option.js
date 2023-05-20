@@ -1,4 +1,9 @@
-//documentation https://grotesquegentleadvance--samkhaled.repl.co/
+/**
+ * Fonction permettant de générer des fenêtres d'alerte
+ * documentation https://grotesquegentleadvance--samkhaled.repl.co/
+ * @param {*} _text 
+ * @param {*} _status 
+ */
 const notify = function(_text, _status) {
     $.notify(
         _text,
@@ -13,6 +18,7 @@ const notify = function(_text, _status) {
     );
 }
 
+// Configuration pour le datepicker
 $.datepicker.regional['fr'] = {
                 dateFormat: 'dd/mm/yy',
                 closeText: 'Fermer',
@@ -34,4 +40,7 @@ $.datepicker.regional['fr'] = {
             };
 $.datepicker.setDefaults($.datepicker.regional['fr']);
 
+/**
+ * URL du back / de l'API
+ */
 const urlBase = 'http://localhost:8081/';

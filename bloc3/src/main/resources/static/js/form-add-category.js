@@ -1,3 +1,6 @@
+/**
+ * Fonction permettant d'ajouter un produit
+ */
 $(document).ready(function() {
 
     $("#idFormCategory").submit(function(event) {
