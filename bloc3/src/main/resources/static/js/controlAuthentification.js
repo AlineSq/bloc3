@@ -1,4 +1,4 @@
 
 checkQuery(
-    () => { window.location.href = "/login-mercado"; }
+    () => { window.location.href = "/login-mercadona"; }
 );

@@ -100,10 +100,15 @@ public class UserService {
      */
     private Token findTokenByToken(String _token) {
         Token foundToken = null;
-        for (Token t : this.tokens) {
-            if (t.value.equals(_token)) {
-                foundToken = t;
-                break;
+        if (_token != null) {
+            if (_token.contains("Bearer"))
+                _token = _token.substring(7);
+
+            for (Token t : this.tokens) {
+                if (t.value.equals(_token)) {
+                    foundToken = t;
+                    break;
+                }
             }
         }
         return foundToken;

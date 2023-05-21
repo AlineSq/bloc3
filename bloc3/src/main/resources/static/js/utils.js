@@ -17,7 +17,7 @@ const myQuery = function(_urlEnd, _type, _contentType, _data, _successCallBack, 
         },
         error: function(xhr) {
             if (xhr?.responseJSON?.status == 401)
-                window.location.href = "/login-mercado";
+                window.location.href = "/login-mercadona";
 
             if (_errorCallBack)
                 _errorCallBack(xhr?.responseJSON);
@@ -47,7 +47,7 @@ const myQuery = function(_urlEnd, _type, _contentType, _data, _successCallBack, 
  */
 const logout = function() {
     myQuery("users/logout", "POST", null, null, () => {
-        window.location.href = "/login-mercado";
+        window.location.href = "/login-mercadona";
       });
   }
 

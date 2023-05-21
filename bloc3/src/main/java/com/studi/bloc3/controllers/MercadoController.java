@@ -16,7 +16,7 @@ public class MercadoController {
         return "catalog";
     }
 
-    @GetMapping(value = "/login-mercado")
+    @GetMapping(value = "/login-mercadona")
     public String login() {
         return "login";
     }

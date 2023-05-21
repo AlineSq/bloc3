@@ -110,21 +110,22 @@ class UserTests {
           assertThrows(ResponseStatusException.class, () -> userController.checkToken("ok"),
                     "La méthode doit throw une exception UNAUTHORIZED");
      }
-
+     
      @Test
      public void test_checkToken_valid() {
-
-          String valideToken = logValideUserAndGetToken();
-          String result = userController.checkToken(valideToken);
+          String validToken = logValideUserAndGetToken();
+          String result = userController.checkToken(validToken);
           assertEquals(result, "true");
-
      }
 
      @Test
      public void test_logout_valid() {
-          String valideToken = logValideUserAndGetToken();
-          String result = userController.logout(valideToken);
+          String validToken = logValideUserAndGetToken();
+          String result = userController.logout(validToken);
           assertEquals(result, "Déconnexion réussie");
+
+          assertThrows(ResponseStatusException.class, () -> userController.checkToken(validToken),
+                    "La méthode doit throw une exception UNAUTHORIZED");
      }
 
      @Test
