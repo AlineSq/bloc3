@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping("check")
-    public String checkToken(@RequestHeader("Authorization") String authorizationHeader) {
+    public String checkToken(@RequestHeader(value ="Authorization", required = false) String authorizationHeader) {
         return userService.checkToken(authorizationHeader);
     }
 

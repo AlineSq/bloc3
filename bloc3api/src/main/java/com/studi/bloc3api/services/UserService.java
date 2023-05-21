@@ -27,7 +27,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public String checkToken(String _token) {
-        if (_token.length() > 0) {
+        if (_token != null && _token.length() > 0) {
 
             var tokenToUse = _token;
             if (tokenToUse.contains("Bearer"))
